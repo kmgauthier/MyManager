@@ -5,6 +5,8 @@
  */
 package mymanager;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Matthew Fair
@@ -19,6 +21,12 @@ public class MyManager {
         System.out.println("This is a test");
         System.out.println("testing netbeans push");
         System.out.println("test");
+        
+        JFrame main = new JFrame("MyManager");
+        //frame modifications go here
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        main.setBounds(100, 100, 100, 100);
+        main.setVisible(true); 
     }
     
 }
