@@ -18,20 +18,20 @@ public class MyManager {
      */
     public static void main(String[] args) {
         
-        System.out.println("This is a test");
-        System.out.println("testing netbeans push");
-        System.out.println("test");
-        
-        JFrame main = new JFrame("MyManager");
+        JFrame main = new JFrame("MyManager"); //create a main frame
         //frame modifications go here
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setBounds(300, 300, 500, 300);
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close when you hit the X
+        main.setBounds(300, 300, 500, 300); //location the window pops up and size of the window
         main.setVisible(true); 
         
-        JPanel mainPanel = new JPanel();
-        main.add(mainPanel);
-        JButton login = new JButton("Submit");
-        main.add(login);
+        JPanel mainPanel = new JPanel(); //create panel for adding buttons to
+        main.add(mainPanel); //ad panel to the frame
+        
+        JButton login = new JButton("Submit"); //create login button
+        login.setBounds(100, 200, 20, 4); //set size and location of button
+        main.add(login); //add the button to the panel
+        
+        
         
     }
     
