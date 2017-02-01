@@ -5,8 +5,13 @@
  */
 package mymanager;
 
+<<<<<<< HEAD
 import javax.swing.JFrame;
 import java.util.*;
+=======
+import javax.swing.*;
+
+>>>>>>> origin/master
 /**
  *
  * @author Matthew Fair
@@ -25,8 +30,14 @@ public class MyManager {
         JFrame main = new JFrame("MyManager");
         //frame modifications go here
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setBounds(100, 100, 100, 100);
+        main.setBounds(300, 300, 500, 300);
         main.setVisible(true); 
+        
+        JPanel mainPanel = new JPanel();
+        main.add(mainPanel);
+        JButton login = new JButton("Submit");
+        main.add(login);
+        
     }
     
 }
