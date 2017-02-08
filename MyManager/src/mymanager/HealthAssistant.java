@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
+
 
 
 /**
@@ -18,13 +20,16 @@ public class HealthAssistant extends JFrame {
     JPanel pnlButton = new JPanel();
     
     JButton backButton = new JButton("Back");
+    FlowLayout layout = new FlowLayout(400);
     
     public HealthAssistant(){
+        this.setLayout(layout);
         backButton.setBounds(60, 400, 220, 30);
         pnlButton.setBounds(800,800,200,100);
         
         pnlButton.add(backButton);
         add(pnlButton);
+        pnlButton.setBackground(Color.WHITE);
         
         backButton.addActionListener(new ActionListener(){
             @Override

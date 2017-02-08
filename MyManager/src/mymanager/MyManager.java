@@ -45,6 +45,7 @@ public class MyManager extends JFrame{
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
                 new FinancialAssistant();
+
             }
             
         });
@@ -53,7 +54,8 @@ public class MyManager extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
-                new HealthAssistant(); 
+                new HealthAssistant();
+                
             }
             
         });
