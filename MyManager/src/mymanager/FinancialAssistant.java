@@ -6,12 +6,30 @@
 package mymanager;
 
 import javax.swing.*;
+import java.awt.Color;
 
-/**
- *
- * @author Matthew Fair
- */
-public class FinancialAssistant {
-    JFrame fWindow = new JFrame("Financial Assistant");
+public class FinancialAssistant extends JFrame {
+    
+    JPanel pnlButton = new JPanel();
+    
+    JButton billsButton = new JButton("Monthly Bills");
+    
+    public FinancialAssistant(){
+        
+        billsButton.setBounds(60, 400, 220, 30);
+        pnlButton.setBounds(800,800,200,100);
+        
+        pnlButton.add(billsButton);
+        add(pnlButton);
+        
+        setSize(400, 400);
+        setBackground(Color.BLACK);
+        setTitle("Financial Assistant");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+              
+    }
+    
     
 }
