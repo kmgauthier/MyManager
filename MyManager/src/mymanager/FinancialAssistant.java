@@ -14,17 +14,17 @@ public class FinancialAssistant extends JFrame {
     
     JPanel pnlButton = new JPanel();
     
-    JButton billsButton = new JButton("Does Nothing Right now");
+    JButton backButton = new JButton("Back");
     
     public FinancialAssistant(){
         
-        billsButton.setBounds(60, 400, 220, 30);
+        backButton.setBounds(60, 400, 220, 30);
         pnlButton.setBounds(800,800,200,100);
         
-        pnlButton.add(billsButton);
+        pnlButton.add(backButton);
         add(pnlButton);
         
-        billsButton.addActionListener(new ActionListener(){
+        backButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
