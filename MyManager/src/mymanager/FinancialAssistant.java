@@ -7,12 +7,14 @@ package mymanager;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FinancialAssistant extends JFrame {
     
     JPanel pnlButton = new JPanel();
     
-    JButton billsButton = new JButton("Monthly Bills");
+    JButton billsButton = new JButton("Does Nothing Right now");
     
     public FinancialAssistant(){
         
@@ -21,6 +23,15 @@ public class FinancialAssistant extends JFrame {
         
         pnlButton.add(billsButton);
         add(pnlButton);
+        
+        billsButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                setVisible(false);
+                new MyManager();
+            }
+            
+        });
         
         setSize(400, 400);
         setBackground(Color.BLACK);
