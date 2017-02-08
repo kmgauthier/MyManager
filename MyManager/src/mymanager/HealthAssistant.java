@@ -6,6 +6,8 @@
 package mymanager;
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -15,14 +17,23 @@ import java.awt.Color;
 public class HealthAssistant extends JFrame {
     JPanel pnlButton = new JPanel();
     
-    JButton calorieButton = new JButton("Calorie Intake");
+    JButton backButton = new JButton("Back");
     
     public HealthAssistant(){
-        calorieButton.setBounds(60, 400, 220, 30);
+        backButton.setBounds(60, 400, 220, 30);
         pnlButton.setBounds(800,800,200,100);
         
-        pnlButton.add(calorieButton);
+        pnlButton.add(backButton);
         add(pnlButton);
+        
+        backButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                setVisible(false);
+                new MyManager();
+            }
+            
+        });
         
         setSize(400, 400);
         setBackground(Color.BLACK);
