@@ -5,13 +5,13 @@
  */
 package mymanager;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import javax.swing.JFrame;
 import java.util.*;
-=======
+//=======
 import javax.swing.*;
 
->>>>>>> origin/master
+//>>>>>>> origin/master
 /**
  *
  * @author Matthew Fair
