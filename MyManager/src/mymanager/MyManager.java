@@ -5,74 +5,88 @@
  */
 package mymanager;
 
-//<<<<<<< HEAD
 import javax.swing.*;
-import java.util.*;
-import java.awt.Color;
-//=======
-import javax.swing.*;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
-//>>>>>>> origin/master
 /**
  *
  * @author Matthew Fair
  */
-public class MyManager extends JFrame{
-    
-    JPanel pnlButton = new JPanel();
-    JButton btnFinancialAssistant = new JButton("Financial Assistant");
-    JButton btnHealthAssistant = new JButton("Health Assistant");
-    
-    public MyManager(){
-        super("Button");
-        btnFinancialAssistant.setBounds(60, 400, 220, 30);
-        btnHealthAssistant.setBounds(60, 500, 220, 30);
-       
-        
-        //pnlButton.setLayout(null);
-        
-        pnlButton.setBounds(800, 800, 200, 100);
-               
-        pnlButton.add(btnFinancialAssistant);        
-        pnlButton.add(btnHealthAssistant);
-        
-        add(pnlButton);
-        btnFinancialAssistant.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                setVisible(false);
-                new FinancialAssistant();
+public class MyManager extends JFrame {
 
-            }
-            
-        });
-        
-        btnHealthAssistant.addActionListener(new ActionListener(){
+    JFrame frame;
+    JButton financialAssistant, healthAssistant, myProfile;
+    JLabel welcome;
+
+    public MyManager() {
+
+        frame = new JFrame("My Manager");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
+
+        financialAssistant = new JButton("Financial Assistant");
+        healthAssistant = new JButton("Health Assistant");
+        myProfile = new JButton("My Profile");
+        welcome = new JLabel("Welcome to My Manager!");
+
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.fill = GridBagConstraints.VERTICAL;
+        gc.insets = new Insets(10, 10, 10, 10);
+
+        gc.gridx = 0;
+        gc.gridy = 0;
+        frame.add(welcome, gc);
+
+        gc.gridx = 1;
+        gc.gridy = 0;
+        frame.add(myProfile, gc);
+        myProfile.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                setVisible(false);
-                new HealthAssistant();
-                
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new MyProfile();
             }
-            
+
         });
-        
-        setSize(400,400);
-        setBackground(Color.WHITE);
-        setTitle("My Manager");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+
+        gc.gridx = 0;
+        gc.gridy = 1;
+        frame.add(financialAssistant, gc);
+        financialAssistant.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new FinancialAssistant();
+            }
+
+        });
+
+        gc.gridx = 1;
+        gc.gridy = 1;
+        frame.add(healthAssistant, gc);
+        healthAssistant.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new HealthAssistant();
+            }
+
+        });
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
     }
-    
-    
+
     public static void main(String[] args) {
-        
+
         new MyManager();
-          
+
     }
-    
+
 }

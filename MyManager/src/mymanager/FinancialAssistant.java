@@ -6,40 +6,50 @@
 package mymanager;
 
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 public class FinancialAssistant extends JFrame {
-    
-    private JPanel pnlButton = new JPanel();
-    private JButton backButton = new JButton("Back");
-    
-    public FinancialAssistant(){
+
+    private JFrame frame;
+    private JButton backButton;
+    private JLabel welcome;
+
+    public FinancialAssistant() {
+
+        frame = new JFrame("Financial Assistant");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
         
-        backButton.setBounds(60, 400, 220, 30);
-        pnlButton.setBounds(800,800,200,100);
+        backButton = new JButton("Back");
+        welcome = new JLabel("Welcome to the Financial Assistant!");
         
-        pnlButton.add(backButton);
-        add(pnlButton);
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        gc.insets = new Insets(10, 50, 10, 50);
         
-        backButton.addActionListener(new ActionListener(){
+        gc.gridx = 0;
+        gc.gridy = 0;
+        frame.add(welcome, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        frame.add(backButton, gc);
+        backButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                setVisible(false);
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
                 new MyManager();
             }
-            
+
         });
         
-        setSize(400, 400);
-        setBackground(Color.BLACK);
-        setTitle("Financial Assistant");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-              
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
-    
-    
+
 }
