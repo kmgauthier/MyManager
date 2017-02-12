@@ -5,10 +5,11 @@
  */
 package mymanager;
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 
 
@@ -17,13 +18,14 @@ import java.awt.FlowLayout;
  * @author Matthew Fair
  */
 public class HealthAssistant extends JFrame {
-    JPanel pnlButton = new JPanel();
+    private JFrame frame = new JFrame();
+    private JButton backButton; // = new JButton("Back");
+    private JTextField currentWeight;
     
-    JButton backButton = new JButton("Back");
-    FlowLayout layout = new FlowLayout(400);
     
     public HealthAssistant(){
-        this.setLayout(layout);
+        
+        /*
         backButton.setBounds(60, 400, 220, 30);
         pnlButton.setBounds(800,800,200,100);
         
@@ -37,7 +39,7 @@ public class HealthAssistant extends JFrame {
                 setVisible(false);
                 new MyManager();
             }
-            
+        
         });
         
         setSize(400, 400);
@@ -46,6 +48,31 @@ public class HealthAssistant extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        */
+        
+        
+        frame = new JFrame("Health Assistant");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new GridBagLayout());
+        
+        currentWeight = new JTextField(5);
+        backButton = new JButton("Set Weight");
+        
+        GridBagConstraints gridC = new GridBagConstraints();
+        gridC.fill = GridBagConstraints.HORIZONTAL;
+        gridC.insets = new Insets(10, 10, 10, 10);
+        
+        gridC.gridx = 0;
+        gridC.gridy = 0;
+        frame.add(currentWeight, gridC);
+        
+        gridC.gridx = 5;
+        gridC.gridy = 0;
+        frame.add(backButton, gridC);
+        
+        frame.pack();
+        frame.setVisible(true);
     }
     
     

@@ -12,9 +12,8 @@ import java.awt.event.ActionListener;
 
 public class FinancialAssistant extends JFrame {
     
-    JPanel pnlButton = new JPanel();
-    
-    JButton backButton = new JButton("Back");
+    private JPanel pnlButton = new JPanel();
+    private JButton backButton = new JButton("Back");
     
     public FinancialAssistant(){
         
