@@ -20,9 +20,9 @@ import java.io.*;
 public class MyProfile {
 
     private JFrame frame;
-    private JTextField weight, heightFeet, heightInches, age, firstName, lastName;
+    private JTextField weight, heightFeet, heightInches, age, firstName, lastName, goalSavings, startingSavings, startingBalance;
     private JButton saveButton, backButton;
-    private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender;
+    private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender, goalSavingsLabel, startBalanceLabel, startSaveLabel;
     private WriteData storedData;
     private JRadioButton male, female;
     
@@ -33,12 +33,15 @@ public class MyProfile {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
 
-        weight = new JTextField(5);
-        heightFeet = new JTextField(5);
-        heightInches = new JTextField(5);
-        age = new JTextField(5);
-        firstName = new JTextField(5);
-        lastName = new JTextField(5);
+        weight = new JTextField("", 4);
+        heightFeet = new JTextField("", 5);
+        heightInches = new JTextField("", 3);
+        age = new JTextField("", 5);
+        firstName = new JTextField("", 10);
+        lastName = new JTextField("", 10);
+        goalSavings = new JTextField("", 10);
+        startingSavings = new JTextField("", 10);
+        startingBalance = new JTextField("", 10);
 
         weightLabel = new JLabel("Weight");
         heightLabel = new JLabel("Height");
@@ -51,6 +54,9 @@ public class MyProfile {
         gender = new JLabel("gender");
         male = new JRadioButton("male");
         female = new JRadioButton("female");
+        startBalanceLabel = new JLabel("Starting Account Balance: $");
+        startSaveLabel = new JLabel("Starting Savings Amount: $");
+        goalSavingsLabel = new JLabel("Goal Savings: $");
         
 
         saveButton = new JButton("Save");
@@ -105,33 +111,50 @@ public class MyProfile {
         gc.gridx = 0;
         gc.gridy = 3;
         frame.add(nameLabel, gc);
-        gc.gridx = 1;
-        gc.gridy = 3;
-        frame.add(firstName, gc);
         gc.gridx = 2;
         gc.gridy = 3;
+        frame.add(firstName, gc);
+        gc.gridx = 1;
+        gc.gridy = 3;
         frame.add(first, gc);
-        gc.gridx = 4;
+        gc.gridx = 3;
         gc.gridy = 3;
         frame.add(last, gc);
-        gc.gridx = 3;
+        gc.gridx = 4;
         gc.gridy = 3;
         frame.add(lastName, gc);
         gc.gridx = 0;
-        gc.gridy = 5;
-        frame.add(backButton, gc);
-        
-        gc.gridx = 0;
         gc.gridy = 4;
         frame.add(gender, gc);
-        
-        gc.gridx = 2;
+        gc.gridx = 1;
         gc.gridy = 4;
         frame.add(male, gc);
-        
-        gc.gridx = 3;
+        gc.gridx = 2;
         gc.gridy = 4;
         frame.add(female, gc);
+        gc.gridx = 0;
+        gc.gridy = 5;
+        frame.add(startBalanceLabel, gc);
+        gc.gridx = 1;
+        gc.gridy = 5;
+        frame.add(startingBalance, gc);
+        gc.gridx = 0;
+        gc.gridy = 6;
+        frame.add(startSaveLabel, gc);
+        gc.gridx = 1;
+        gc.gridy = 6;
+        frame.add(startingSavings, gc);
+        gc.gridx = 0;
+        gc.gridy = 7;
+        frame.add(goalSavingsLabel, gc);
+        gc.gridx=1;
+        gc.gridy = 7;
+        frame.add(goalSavings, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 8;
+        frame.add(backButton, gc);
+        
         
         
         backButton.addActionListener(new ActionListener() {
