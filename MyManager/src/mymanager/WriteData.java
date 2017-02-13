@@ -4,24 +4,24 @@
  * and open the template in the editor.
  */
 package mymanager;
-
+import java.io.Serializable;
 /**
  *
  * @author Matt
  */
-public class WriteData {
+public class WriteData implements Serializable{
     
     private int weight, age;
     private Height height;
-    private String name;
+    private String firstName, lastName;
     private boolean hasData = false;
     
     
-    public WriteData(Height newHeight, int newWeight, int newAge, String newName){
+    public WriteData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName){
         setWeight(newWeight);
         setHeight(newHeight);
         setAge(newAge);
-        setName(newName);
+        setName(newFirstName, newLastName);
         hasData = true;
     }
     
@@ -49,8 +49,9 @@ public class WriteData {
         }
     }
     
-    public void setName(String newName){
-        name = newName;
+    public void setName(String newFirstName, String newLastName){
+        firstName = newFirstName;
+        lastName = newLastName;
     }
     
     public int getWeight(){
@@ -65,12 +66,19 @@ public class WriteData {
         return age;
     }
     
-    public String getName(){
-        return name;
+    public String getFirstName(){
+        return firstName;
     }
     
-    public boolean hasData(){
-        return hasData;
+    public String getLastName(){
+        return lastName;
+    }
+    
+    
+
+    @Override
+    public String toString(){
+        return "Name: "+firstName+" "+lastName+", Age: "+age+", Height: "+height+", Weight: "+weight;
     }
     
     

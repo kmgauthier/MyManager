@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package mymanager;
+import java.io.Serializable;
 
 /**
  *
  * @author Matt
  */
-public class Height {
+public class Height implements Serializable {
     
     private int feet = 0, inches = 0;
     
@@ -50,6 +51,11 @@ public class Height {
         } else {
             inches = 0;
         }
+    }
+    
+    @Override
+    public String toString(){
+        return feet+" foot "+inches+" inches";
     }
     
     

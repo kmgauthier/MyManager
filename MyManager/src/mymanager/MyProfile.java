@@ -23,11 +23,11 @@ public class MyProfile {
     private JTextField weight, heightFeet, heightInches, age, firstName, lastName;
     private JButton saveButton, backButton;
     private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last;
-    private WriteData newData;
+    private WriteData storedData;
     
 
     public MyProfile() {
-
+        
         frame = new JFrame("My Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
@@ -51,6 +51,21 @@ public class MyProfile {
 
         saveButton = new JButton("Save");
         backButton = new JButton("Back");
+        
+        
+        storedData = read();
+        if(storedData != null){
+            weight.setText(Integer.toString(storedData.getWeight()));
+            heightFeet.setText(Integer.toString(storedData.getHeight().getFoot()));
+            heightInches.setText(Integer.toString(storedData.getHeight().getInches()));
+            age.setText(Integer.toString(storedData.getAge()));
+            firstName.setText(storedData.getFirstName());
+            lastName.setText(storedData.getLastName());
+        } 
+        
+        
+
+
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -132,15 +147,14 @@ public class MyProfile {
     
     private void saveData(){
         
-        String fullName = firstName.getText() + " " + lastName.getText();
         Height saveHeight = new Height(Integer.parseInt(heightFeet.getText()), Integer.parseInt(heightInches.getText()));
         int saveWeight = Integer.parseInt(weight.getText());
         int saveAge = Integer.parseInt(age.getText());
         
-        newData = new WriteData(saveHeight, saveWeight, saveAge, fullName);
+        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText());
         
-        
-        
+
+        write(storedData);
 
         
         JFrame save = new JFrame("Save Successful");
@@ -176,5 +190,48 @@ public class MyProfile {
         
         
     }
+    
+    private void write(WriteData data){
+        OutputStream ops = null;
+        ObjectOutputStream objOps = null;
+        try{
+            ops = new FileOutputStream("data_storage.txt");
+            objOps = new ObjectOutputStream(ops);
+            objOps.writeObject(data);
+            objOps.flush();
+            
+            
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }        
+        
+    }
 
+    private WriteData read(){
+        InputStream fileIs = null;
+        ObjectInputStream objIs = null;
+        WriteData data = null;
+        try {
+            fileIs = new FileInputStream("data_storage.txt");
+            objIs = new ObjectInputStream(fileIs);
+            WriteData nData = (WriteData) objIs.readObject();
+            data = nData;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(objIs != null) objIs.close();
+            } catch (Exception ex){
+                 
+            }
+        }
+        
+        return data;
+    }
 }
