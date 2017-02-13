@@ -22,8 +22,9 @@ public class MyProfile {
     private JFrame frame;
     private JTextField weight, heightFeet, heightInches, age, firstName, lastName;
     private JButton saveButton, backButton;
-    private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last;
+    private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender;
     private WriteData storedData;
+    private JRadioButton male, female;
     
 
     public MyProfile() {
@@ -47,6 +48,9 @@ public class MyProfile {
         last = new JLabel("Last");
         ft = new JLabel("ft");
         in = new JLabel("in");
+        gender = new JLabel("gender");
+        male = new JRadioButton("male");
+        female = new JRadioButton("female");
         
 
         saveButton = new JButton("Save");
@@ -114,10 +118,22 @@ public class MyProfile {
         gc.gridy = 3;
         frame.add(lastName, gc);
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 5;
         frame.add(backButton, gc);
-    
-
+        
+        gc.gridx = 0;
+        gc.gridy = 4;
+        frame.add(gender, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 4;
+        frame.add(male, gc);
+        
+        gc.gridx = 3;
+        gc.gridy = 4;
+        frame.add(female, gc);
+        
+        
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,7 +144,7 @@ public class MyProfile {
         });
 
         gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridy = 5;
         frame.add(saveButton, gc);
 
         saveButton.addActionListener(new ActionListener() {
