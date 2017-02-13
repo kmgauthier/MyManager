@@ -34,15 +34,15 @@ public class MyManager extends JFrame {
         welcome = new JLabel("Welcome to My Manager!");
 
         GridBagConstraints gc = new GridBagConstraints();
-        gc.fill = GridBagConstraints.VERTICAL;
-        gc.insets = new Insets(10, 10, 10, 10);
+        gc.fill = GridBagConstraints.VERTICAL; //ADD COMMENT
+        gc.insets = new Insets(10, 10, 10, 10); //ADD COMMENT
 
-        gc.gridx = 0;
-        gc.gridy = 0;
+        gc.gridx = 0; //ADD COMMENT
+        gc.gridy = 0; //ADD COMMENT
         frame.add(welcome, gc);
 
-        gc.gridx = 1;
-        gc.gridy = 0;
+        gc.gridx = 1; //ADD COMMENT
+        gc.gridy = 0; //ADD COMMENT
         frame.add(myProfile, gc);
         myProfile.addActionListener(new ActionListener() { //to go to profile page
             @Override
