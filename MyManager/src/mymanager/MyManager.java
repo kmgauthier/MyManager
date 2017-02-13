@@ -18,13 +18,13 @@ import java.awt.GridBagConstraints;
  */
 public class MyManager extends JFrame {
 
-    JFrame frame;
+    JFrame frame; //home screen
     JButton financialAssistant, healthAssistant, myProfile;
     JLabel welcome;
 
     public MyManager() {
 
-        frame = new JFrame("My Manager");
+        frame = new JFrame("My Manager"); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
 
@@ -44,7 +44,7 @@ public class MyManager extends JFrame {
         gc.gridx = 1;
         gc.gridy = 0;
         frame.add(myProfile, gc);
-        myProfile.addActionListener(new ActionListener() {
+        myProfile.addActionListener(new ActionListener() { //to go to profile page
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
@@ -56,7 +56,7 @@ public class MyManager extends JFrame {
         gc.gridx = 0;
         gc.gridy = 1;
         frame.add(financialAssistant, gc);
-        financialAssistant.addActionListener(new ActionListener() {
+        financialAssistant.addActionListener(new ActionListener() { //to go to financial assistant page
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
@@ -68,7 +68,7 @@ public class MyManager extends JFrame {
         gc.gridx = 1;
         gc.gridy = 1;
         frame.add(healthAssistant, gc);
-        healthAssistant.addActionListener(new ActionListener() {
+        healthAssistant.addActionListener(new ActionListener() { //to go to health assistant page
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
