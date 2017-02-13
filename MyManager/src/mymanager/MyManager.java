@@ -20,7 +20,7 @@ public class MyManager extends JFrame {
 
     JFrame frame; //home screen
     JButton financialAssistant, healthAssistant, myProfile;
-    JLabel welcome;
+    JLabel welcome, netCalories, currentSavings;
 
     public MyManager() {
 
@@ -30,9 +30,12 @@ public class MyManager extends JFrame {
 
         financialAssistant = new JButton("Financial Assistant");
         healthAssistant = new JButton("Health Assistant");
+        
         myProfile = new JButton("My Profile");
         welcome = new JLabel("Welcome to My Manager!");
-
+        currentSavings = new JLabel("Current Savings: "); //should look like "Current Savings: " + savings
+        netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
+        
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.VERTICAL; //ADD COMMENT
         gc.insets = new Insets(10, 10, 10, 10); //ADD COMMENT
@@ -40,6 +43,15 @@ public class MyManager extends JFrame {
         gc.gridx = 0; //ADD COMMENT
         gc.gridy = 0; //ADD COMMENT
         frame.add(welcome, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 3;
+        frame.add(netCalories, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 3;
+        frame.add(currentSavings, gc);
+        
 
         gc.gridx = 1; //ADD COMMENT
         gc.gridy = 0; //ADD COMMENT
@@ -77,7 +89,7 @@ public class MyManager extends JFrame {
 
         });
 
-        frame.pack();
+        frame.pack(); //comment what does this do?
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
