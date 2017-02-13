@@ -24,8 +24,7 @@ public class MyProfile {
     private JButton saveButton, backButton;
     private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender, goalSavingsLabel, startBalanceLabel, startSaveLabel;
     private WriteData storedData;
-    private JRadioButton male, female;
-    
+    private JComboBox genderBox;
 
     public MyProfile() {
         
@@ -51,9 +50,9 @@ public class MyProfile {
         last = new JLabel("Last");
         ft = new JLabel("ft");
         in = new JLabel("in");
-        gender = new JLabel("gender");
-        male = new JRadioButton("male");
-        female = new JRadioButton("female");
+        gender = new JLabel("Gender");
+        String[] genders = {"Female", "Male"};
+        genderBox = new JComboBox(genders);
         startBalanceLabel = new JLabel("Starting Account Balance: $");
         startSaveLabel = new JLabel("Starting Savings Amount: $");
         goalSavingsLabel = new JLabel("Goal Savings: $");
@@ -128,10 +127,7 @@ public class MyProfile {
         frame.add(gender, gc);
         gc.gridx = 1;
         gc.gridy = 4;
-        frame.add(male, gc);
-        gc.gridx = 2;
-        gc.gridy = 4;
-        frame.add(female, gc);
+        frame.add(genderBox, gc);
         gc.gridx = 0;
         gc.gridy = 5;
         frame.add(startBalanceLabel, gc);
@@ -151,9 +147,13 @@ public class MyProfile {
         gc.gridy = 7;
         frame.add(goalSavings, gc);
         
-        gc.gridx = 0;
+        gc.gridx = 1;
         gc.gridy = 8;
         frame.add(backButton, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 8;
+        frame.add(saveButton, gc);
         
         
         
@@ -165,10 +165,6 @@ public class MyProfile {
             }
 
         });
-
-        gc.gridx = 1;
-        gc.gridy = 5;
-        frame.add(saveButton, gc);
 
         saveButton.addActionListener(new ActionListener() {
             @Override 
@@ -189,8 +185,13 @@ public class MyProfile {
         Height saveHeight = new Height(Integer.parseInt(heightFeet.getText()), Integer.parseInt(heightInches.getText()));
         int saveWeight = Integer.parseInt(weight.getText());
         int saveAge = Integer.parseInt(age.getText());
-        
-        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText());
+        //save gender
+        double startBalance = Double.parseDouble(startingBalance.getText());
+        double startSavings = Double.parseDouble(startingSavings.getText());
+        double savingsGoal = Double.parseDouble(goalSavings.getText());
+        String theGender = (String) genderBox.getSelectedItem();
+        //need to have gender in here
+        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), theGender, startBalance, startSavings, savingsGoal);
         
 
         write(storedData);
