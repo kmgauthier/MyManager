@@ -10,7 +10,7 @@ public class HealthData implements Serializable {
     private int netCals;
     
     public HealthData(int newCalsBurned, int newCalsConsumed){
-        setCalsBurned(newCalsBurned);
+        addCalsBurned(newCalsBurned);
         addCalsConsumed(newCalsConsumed);
     }
     
@@ -20,10 +20,10 @@ public class HealthData implements Serializable {
         netCals = 0;
     }
     
-    public void setCalsBurned(int newCalsBurned){
+    public void addCalsBurned(int newCalsBurned){
         if(newCalsBurned >= 0){
-            calsBurned = newCalsBurned;
-            calcNetCals();
+            calsBurned += newCalsBurned;
+            netCals -= newCalsBurned;
         } else {
             
         }

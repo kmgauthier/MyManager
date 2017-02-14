@@ -36,12 +36,16 @@ public class MyManager extends JFrame {
         ProfileData storedData = ProfileData.read();
         if(storedData != null){
             currentSavings = new JLabel("Current Savings: $"+Double.toString(storedData.getStartBalance())); //should look like "Current Savings: " + savings
-            netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
-        } else {
+            } else {
             currentSavings = new JLabel("Current Savings: "); //should look like "Current Savings: " + savings
             netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
         }
-        
+        HealthData storedHealthData = HealthData.read();
+        if(storedHealthData != null){
+            netCalories = new JLabel("Net Calories Today: "+Integer.toString(storedHealthData.getNetCals())); //should look like "Net Calories Today: " + netCals
+        } else {
+            netCalories = new JLabel("Net Calories Today: 0"); //should look like "Net Calories Today: " + netCals
+        }
         
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.VERTICAL; //ADD COMMENT

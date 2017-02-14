@@ -29,10 +29,10 @@ public class HealthAssistant extends JFrame {
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        
-        if(HealthData.read() != null){
+
+        if (HealthData.read() != null) {
             data = HealthData.read();
-            netCals = new JLabel("Net Calories: "+data.getNetCals()); //this should look like "Net Calories: " + userNetCals
+            netCals = new JLabel("Net Calories: " + data.getNetCals()); //this should look like "Net Calories: " + userNetCals
         } else {
             netCals = new JLabel("Net Calories: "); //this should look like "Net Calories: " + userNetCals
         }
@@ -43,7 +43,7 @@ public class HealthAssistant extends JFrame {
         BMICalc = new JLabel("BMI: "); //this should look like "BMI: " + bmi
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
-         
+
         welcome = new JLabel("Welcome to the Health Assistant!");
         inAddCalsBurn = new JTextField(5); //input box for calories burned
         inAddCalsConsumed = new JTextField(5); //input box for calories consumed
@@ -77,13 +77,56 @@ public class HealthAssistant extends JFrame {
         gridC.gridy = 3;
         frame.add(addCalsConsumed, gridC);
 
-        addCalsConsumed.addActionListener(new ActionListener() {
+        addCalsConsumed.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
             @Override
             public void actionPerformed(ActionEvent e) {
                 data.addCalsConsumed(Integer.parseInt(inAddCalsConsumed.getText()));
                 HealthData.write(data);
-                netCals = new JLabel("Net Calories: "+data.getNetCals()); //this should look like "Net Calories: " + userNetCals
-                        JFrame save = new JFrame("Save Successful");
+                netCals = new JLabel("Net Calories: " + data.getNetCals()); //this should look like "Net Calories: " + userNetCals
+                saveData();
+            }
+        });
+
+        gridC.gridx = 1;
+        gridC.gridy = 3;
+        frame.add(inAddCalsConsumed, gridC);
+
+        //this block is for adding calories burned
+        gridC.gridx = 0;
+        gridC.gridy = 4;
+        frame.add(addCalsBurn, gridC);
+        
+         addCalsBurn.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                data.addCalsBurned(Integer.parseInt(inAddCalsBurn.getText()));
+                HealthData.write(data);
+                netCals = new JLabel("Net Calories: " + data.getNetCals()); //this should look like "Net Calories: " + userNetCals
+                saveData();
+            }
+        });
+        
+        gridC.gridx = 1;
+        gridC.gridy = 4;
+        frame.add(inAddCalsBurn, gridC);
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new MyManager();
+            }
+
+        });
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    
+    private void saveData() {
+        JFrame save = new JFrame("Save Successful");
         JButton ok = new JButton("OK");
         JLabel success = new JLabel("Your settings have been saved successfully!");
 
@@ -113,34 +156,5 @@ public class HealthAssistant extends JFrame {
         save.setLocationRelativeTo(null);
         frame.setVisible(false);
         save.setVisible(true);
-
-            }
-        });
-
-        gridC.gridx = 1;
-        gridC.gridy = 3;
-        frame.add(inAddCalsConsumed, gridC);
-
-        //this block is for adding calories burned
-        gridC.gridx = 0;
-        gridC.gridy = 4;
-        frame.add(addCalsBurn, gridC);
-        gridC.gridx = 1;
-        gridC.gridy = 4;
-        frame.add(inAddCalsBurn, gridC);
-
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                new MyManager();
-            }
-
-        });
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
-
 }
