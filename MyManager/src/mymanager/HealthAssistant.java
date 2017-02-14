@@ -82,6 +82,38 @@ public class HealthAssistant extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 data.addCalsConsumed(Integer.parseInt(inAddCalsConsumed.getText()));
                 HealthData.write(data);
+                netCals = new JLabel("Net Calories: "+data.getNetCals()); //this should look like "Net Calories: " + userNetCals
+                        JFrame save = new JFrame("Save Successful");
+        JButton ok = new JButton("OK");
+        JLabel success = new JLabel("Your settings have been saved successfully!");
+
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        save.setLayout(new GridBagLayout());
+
+        GridBagConstraints sc = new GridBagConstraints();
+        sc.fill = GridBagConstraints.HORIZONTAL;
+        sc.insets = new Insets(10, 2, 10, 2); //TOP, LEFT, BOTTOM, RIGHT
+
+        sc.gridx = 0;
+        sc.gridy = 0;
+        save.add(success, sc);
+        sc.gridx = 0;
+        sc.gridy = 1;
+        save.add(ok, sc);
+
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save.setVisible(false);
+                new HealthAssistant();
+            }
+        });
+
+        save.pack();
+        save.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        save.setVisible(true);
+
             }
         });
 
