@@ -253,7 +253,7 @@ public class MyProfile {
         
     }
 
-    private WriteData read(){
+    public static WriteData read(){
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         WriteData data = null;

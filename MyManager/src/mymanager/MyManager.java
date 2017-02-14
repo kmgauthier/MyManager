@@ -33,8 +33,15 @@ public class MyManager extends JFrame {
         
         myProfile = new JButton("My Profile");
         welcome = new JLabel("Welcome to My Manager!");
-        currentSavings = new JLabel("Current Savings: "); //should look like "Current Savings: " + savings
-        netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
+        WriteData storedData = MyProfile.read();
+        if(storedData != null){
+            currentSavings = new JLabel("Current Savings: $"+Double.toString(storedData.getStartBalance())); //should look like "Current Savings: " + savings
+            netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
+        } else {
+            currentSavings = new JLabel("Current Savings: "); //should look like "Current Savings: " + savings
+            netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
+        }
+        
         
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.VERTICAL; //ADD COMMENT
