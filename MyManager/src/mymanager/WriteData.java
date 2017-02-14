@@ -11,14 +11,14 @@ import java.io.Serializable;
  */
 public class WriteData implements Serializable{
     
-    private int weight, age, startBalance, startSavings, savingsGoal;
+    private int weight, age;
+    private double startBalance, startSavings, savingsGoal;
     private Height height;
-    private String firstName, lastName, date;
-    private boolean hasData = false;
+    private String firstName, lastName, date, gender;
+
     
     
-    public WriteData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName, 
-            int newStartBalance, int newStartSavings, int newSaveGoal){
+    public WriteData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName, String newGender, double newStartBalance, double newStartSavings, double newSaveGoal){
         setWeight(newWeight);
         setHeight(newHeight);
         setAge(newAge);
@@ -26,7 +26,7 @@ public class WriteData implements Serializable{
         setStartBalance(newStartBalance);
         setStartSavings(newStartSavings);
         setSavingsGoal(newSaveGoal);
-        hasData = true;
+        setGender(newGender);
     }
     
     public void setHeight(Height newHeight){
@@ -58,7 +58,7 @@ public class WriteData implements Serializable{
         lastName = newLastName;
     }
     
-    public void setStartBalance(int newStartBalance){
+    public void setStartBalance(double newStartBalance){
         if(newStartBalance >= 0){
             startBalance = newStartBalance;
         }
@@ -67,7 +67,7 @@ public class WriteData implements Serializable{
         }
     }
     
-    public void setStartSavings(int newStartSavings ){
+    public void setStartSavings(double newStartSavings ){
         if( newStartSavings >=0 ){
             startSavings = newStartSavings;
         }
@@ -76,12 +76,24 @@ public class WriteData implements Serializable{
         }
     }
     
-    public void setSavingsGoal(int newSaveGoal){
+    public void setSavingsGoal(double newSaveGoal){
         if( newSaveGoal >0 ){
             savingsGoal = newSaveGoal;
         }
         else{
             //error
+        }
+    }
+    
+    public void setGender(String newGender){
+        if(newGender.equals("Male") || newGender.equals("Female")){
+            gender = newGender;
+        } else {
+            
+            
+            //Error or something
+            
+            
         }
     }
     
@@ -105,16 +117,20 @@ public class WriteData implements Serializable{
         return lastName;
     }
     
-    public int getStartSavings(){
+    public double getStartSavings(){
         return startSavings;
     }
     
-    public int getStartBalance(){
+    public double getStartBalance(){
         return startBalance;
     }
 
-    public int getSavingsGoal(){
+    public double getSavingsGoal(){
         return savingsGoal;
+    }
+    
+    public String getGender(){
+        return gender;
     }
     
     @Override

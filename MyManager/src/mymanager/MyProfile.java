@@ -70,6 +70,10 @@ public class MyProfile {
             age.setText(Integer.toString(storedData.getAge()));
             firstName.setText(storedData.getFirstName());
             lastName.setText(storedData.getLastName());
+            goalSavings.setText(Double.toString(storedData.getSavingsGoal()));
+            startingSavings.setText(Double.toString(storedData.getStartSavings()));
+            startingBalance.setText(Double.toString(storedData.getStartBalance()));
+            genderBox.setSelectedItem(storedData.getGender());
         } 
         
         
@@ -89,70 +93,70 @@ public class MyProfile {
         gc.gridx = 2;
         gc.gridy = 0;
         frame.add(ft, gc);
-        gc.gridx = 3;
-        gc.gridy = 0;
+        gc.gridx = 1;
+        gc.gridy = 1;
         frame.add(heightInches, gc);
-        gc.gridx = 4;
-        gc.gridy = 0;
+        gc.gridx = 2;
+        gc.gridy = 1;
         frame.add(in, gc);
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = 3;
         frame.add(weightLabel, gc);
         gc.gridx = 1;
-        gc.gridy = 1;
+        gc.gridy = 3;
         frame.add(weight, gc);
         gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridy = 4;
         frame.add(ageLabel, gc);
         gc.gridx = 1;
-        gc.gridy = 2;
+        gc.gridy = 4;
         frame.add(age, gc);
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy = 5;
         frame.add(nameLabel, gc);
-        gc.gridx = 2;
-        gc.gridy = 3;
-        frame.add(firstName, gc);
         gc.gridx = 1;
-        gc.gridy = 3;
+        gc.gridy = 5;
+        frame.add(firstName, gc);
+        gc.gridx = 2;
+        gc.gridy = 5;
         frame.add(first, gc);
-        gc.gridx = 3;
-        gc.gridy = 3;
+        gc.gridx = 2;
+        gc.gridy = 6;
         frame.add(last, gc);
-        gc.gridx = 4;
-        gc.gridy = 3;
+        gc.gridx = 1;
+        gc.gridy = 6;
         frame.add(lastName, gc);
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 7;
         frame.add(gender, gc);
         gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridy = 7;
         frame.add(genderBox, gc);
         gc.gridx = 0;
-        gc.gridy = 5;
+        gc.gridy = 8;
         frame.add(startBalanceLabel, gc);
         gc.gridx = 1;
-        gc.gridy = 5;
+        gc.gridy = 8;
         frame.add(startingBalance, gc);
         gc.gridx = 0;
-        gc.gridy = 6;
+        gc.gridy = 9;
         frame.add(startSaveLabel, gc);
         gc.gridx = 1;
-        gc.gridy = 6;
+        gc.gridy = 9;
         frame.add(startingSavings, gc);
         gc.gridx = 0;
-        gc.gridy = 7;
+        gc.gridy = 10;
         frame.add(goalSavingsLabel, gc);
         gc.gridx=1;
-        gc.gridy = 7;
+        gc.gridy = 10;
         frame.add(goalSavings, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 8;
+        gc.gridx = 0;
+        gc.gridy = 11;
         frame.add(backButton, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 8;
+        gc.gridx = 1;
+        gc.gridy = 11;
         frame.add(saveButton, gc);
         
         
@@ -189,9 +193,9 @@ public class MyProfile {
         double startBalance = Double.parseDouble(startingBalance.getText());
         double startSavings = Double.parseDouble(startingSavings.getText());
         double savingsGoal = Double.parseDouble(goalSavings.getText());
-        String theGender = (String) genderBox.getSelectedItem();
+        String userGender = (String) genderBox.getSelectedItem();
         //need to have gender in here
-        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), theGender, startBalance, startSavings, savingsGoal);
+        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), userGender, startBalance, startSavings, savingsGoal);
         
 
         write(storedData);
