@@ -23,7 +23,7 @@ public class MyProfile {
     private JTextField weight, heightFeet, heightInches, age, firstName, lastName, goalSavings, startingSavings, startingBalance;
     private JButton saveButton, backButton;
     private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender, goalSavingsLabel, startBalanceLabel, startSaveLabel;
-    private WriteData storedData;
+    private ProfileData storedData;
     private JComboBox genderBox;
 
     public MyProfile() {
@@ -62,7 +62,7 @@ public class MyProfile {
         backButton = new JButton("Back");
         
         
-        storedData = WriteData.read();
+        storedData = ProfileData.read();
         if(storedData != null){
             weight.setText(Integer.toString(storedData.getWeight()));
             heightFeet.setText(Integer.toString(storedData.getHeight().getFoot()));
@@ -195,10 +195,10 @@ public class MyProfile {
         double savingsGoal = Double.parseDouble(goalSavings.getText());
         String userGender = (String) genderBox.getSelectedItem();
         //need to have gender in here
-        storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), userGender, startBalance, startSavings, savingsGoal);
+        storedData = new ProfileData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), userGender, startBalance, startSavings, savingsGoal);
         
 
-        WriteData.write(storedData);
+        ProfileData.write(storedData);
 
         
         JFrame save = new JFrame("Save Successful");

@@ -9,7 +9,7 @@ import java.io.*;
  *
  * @author Matt
  */
-public class WriteData implements Serializable{
+public class ProfileData implements Serializable{
     
     private int weight, age;
     private double startBalance, startSavings, savingsGoal;
@@ -18,7 +18,7 @@ public class WriteData implements Serializable{
     
     
     
-    public WriteData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName, String newGender, double newStartBalance, double newStartSavings, double newSaveGoal){
+    public ProfileData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName, String newGender, double newStartBalance, double newStartSavings, double newSaveGoal){
         setWeight(newWeight);
         setHeight(newHeight);
         setAge(newAge);
@@ -139,7 +139,7 @@ public class WriteData implements Serializable{
                 ", Starting Balance: $" + startBalance + ", Starting SAvings: $" + startSavings + ", Goal Savings: $" + savingsGoal;
     }
     
-    public static void write(WriteData data){
+    public static void write(ProfileData data){
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -157,14 +157,14 @@ public class WriteData implements Serializable{
         
     }
 
-    public static WriteData read(){
+    public static ProfileData read(){
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
-        WriteData data = null;
+        ProfileData data = null;
         try {
             fileIs = new FileInputStream("profile_storage.txt");
             objIs = new ObjectInputStream(fileIs);
-            WriteData nData = (WriteData) objIs.readObject();
+            ProfileData nData = (ProfileData) objIs.readObject();
             data = nData;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
