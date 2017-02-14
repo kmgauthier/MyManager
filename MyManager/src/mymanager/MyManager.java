@@ -33,7 +33,7 @@ public class MyManager extends JFrame {
         
         myProfile = new JButton("My Profile");
         welcome = new JLabel("Welcome to My Manager!");
-        WriteData storedData = MyProfile.read();
+        WriteData storedData = WriteData.read();
         if(storedData != null){
             currentSavings = new JLabel("Current Savings: $"+Double.toString(storedData.getStartBalance())); //should look like "Current Savings: " + savings
             netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
@@ -45,7 +45,7 @@ public class MyManager extends JFrame {
         
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.VERTICAL; //ADD COMMENT
-        gc.insets = new Insets(10, 10, 10, 10); //ADD COMMENT
+        gc.insets = new Insets(10, 10, 10, 10); //Declares default spacing between objects on the 
 
         gc.gridx = 0; //ADD COMMENT
         gc.gridy = 0; //ADD COMMENT

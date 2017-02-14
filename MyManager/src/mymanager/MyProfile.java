@@ -62,7 +62,7 @@ public class MyProfile {
         backButton = new JButton("Back");
         
         
-        storedData = read();
+        storedData = WriteData.read();
         if(storedData != null){
             weight.setText(Integer.toString(storedData.getWeight()));
             heightFeet.setText(Integer.toString(storedData.getHeight().getFoot()));
@@ -198,7 +198,7 @@ public class MyProfile {
         storedData = new WriteData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), userGender, startBalance, startSavings, savingsGoal);
         
 
-        write(storedData);
+        WriteData.write(storedData);
 
         
         JFrame save = new JFrame("Save Successful");
@@ -235,6 +235,8 @@ public class MyProfile {
         
     }
     
+    
+    /**
     private void write(WriteData data){
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
@@ -278,4 +280,5 @@ public class MyProfile {
         
         return data;
     }
+    **/
 }
