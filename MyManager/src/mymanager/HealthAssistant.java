@@ -23,9 +23,20 @@ public class HealthAssistant extends JFrame {
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
     private JLabel welcome, netCals, calsToday, BMICalc;
     private HealthData data = new HealthData();
+    private int bmi;
 
     public HealthAssistant() {
 
+        ProfileData profileData = ProfileData.read();
+        if (( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) > 0){
+             bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
+        }
+        else{
+            bmi =0;
+        }
+        //bmi = (profileData.getWeight() / (Math.pow( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()), 2)))*703;
+        //bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
+        
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
@@ -40,7 +51,7 @@ public class HealthAssistant extends JFrame {
         calsToday = new JLabel("Calories Today: "); //this should look like "Calories Today: " + totalCals
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
-        BMICalc = new JLabel("BMI: "); //this should look like "BMI: " + bmi
+        BMICalc = new JLabel("BMI: "+ bmi); //this should look like "BMI: " + bmi
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
 
