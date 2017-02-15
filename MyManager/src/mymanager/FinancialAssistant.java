@@ -34,12 +34,12 @@ public class FinancialAssistant extends JFrame {
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
         totalSavings = new JLabel("Total Savings: $"); //should look like "Total Savings: $" + savings
         goalSavings = new JLabel("Goal Savings: $"); //should look like "Goal Savings: $" + goalSavings
-        totalAccount = new JLabel("Total Accounts: ???");
+        totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
         inDescript = new JTextField("Desciption", 15);
         inSpent = new JTextField("Cost", 15);
         inSavings = new JTextField("Savings", 15);
-        inIncome = new JTextField("Income?", 15);
+        inIncome = new JTextField("Income", 15);
         
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -64,18 +64,18 @@ public class FinancialAssistant extends JFrame {
         frame.add(weeklySpendings, gc);
         
         //adding amount to savings
-        gc.gridx = 0;
+        gc.gridx = 1;
         gc.gridy = 1;
         frame.add(addSavings, gc);
-        gc.gridx = 1;
+        gc.gridx = 0;
         gc.gridy = 1;
         frame.add(inSavings, gc);
         
         //adding amount to income/acccount
-        gc.gridx = 0;
+        gc.gridx = 1;
         gc.gridy = 2;
         frame.add(addIncome, gc);
-        gc.gridx = 1;
+        gc.gridx = 0;
         gc.gridy = 2;
         frame.add(inIncome, gc);
         
@@ -95,11 +95,11 @@ public class FinancialAssistant extends JFrame {
         
         //spending history button
         gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridy = 6;
         frame.add(spendHistory, gc);
         
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 6;
         frame.add(backButton, gc);
         
         backButton.addActionListener(new ActionListener() { //go to home page
