@@ -23,20 +23,11 @@ public class HealthAssistant extends JFrame {
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
     private JLabel welcome, netCals, calsToday, BMICalc;
     private HealthData data = new HealthData();
-    private int bmi;
+    private float bmi;
 
     public HealthAssistant() {
 
         ProfileData profileData = ProfileData.read();
-        if (( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) > 0){
-             bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
-        }
-        else{
-            bmi =0;
-        }
-        //bmi = (profileData.getWeight() / (Math.pow( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()), 2)))*703;
-        //bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
-        
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
@@ -47,7 +38,7 @@ public class HealthAssistant extends JFrame {
         } else {
             netCals = new JLabel("Net Calories: "); //this should look like "Net Calories: " + userNetCals
         }
-
+        bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
         calsToday = new JLabel("Calories Today: "); //this should look like "Calories Today: " + totalCals
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
@@ -167,5 +158,21 @@ public class HealthAssistant extends JFrame {
         save.setLocationRelativeTo(null);
         frame.setVisible(false);
         save.setVisible(true);
+    }
+    
+    private float calcBMI(Height h, int weight) {
+        float calculatedBMI;
+        int heightInches = (h.getFoot() * 12) + h.getInches();
+        int heightSq = heightInches * heightInches;
+        if ((heightInches * heightInches) > 0) {
+            calculatedBMI = (weight / (heightSq));
+            calculatedBMI *= 703;
+        } else {
+            calculatedBMI = 0;
+        }
+        //bmi = (profileData.getWeight() / (Math.pow( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()), 2)))*703;
+        //bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
+
+        return calculatedBMI;
     }
 }
