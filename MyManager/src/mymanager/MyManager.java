@@ -33,12 +33,12 @@ public class MyManager extends JFrame {
         
         myProfile = new JButton("My Profile");
         welcome = new JLabel("Welcome to My Manager!");
-        ProfileData storedData = ProfileData.read();
-        if(storedData != null){
-            currentSavings = new JLabel("Current Savings: $"+Double.toString(storedData.getStartBalance())); //should look like "Current Savings: " + savings
+        FinancialData storedFinData = FinancialData.read();
+        
+        if(storedFinData != null){
+            currentSavings = new JLabel("Current Savings: $"+Double.toString(storedFinData.getCurrentSavingsBalance())); //should look like "Current Savings: " + savings
             } else {
             currentSavings = new JLabel("Current Savings: "); //should look like "Current Savings: " + savings
-            netCalories = new JLabel("Net Calories Today: "); //should look like "Net Calories Today: " + netCals
         }
         HealthData storedHealthData = HealthData.read();
         if(storedHealthData != null){
