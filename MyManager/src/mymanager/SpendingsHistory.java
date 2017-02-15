@@ -61,6 +61,10 @@ public class SpendingsHistory extends JFrame {
             }
 
         });
+        
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
                 
         
     
