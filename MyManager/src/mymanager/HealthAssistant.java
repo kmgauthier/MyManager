@@ -45,8 +45,8 @@ public class HealthAssistant extends JFrame {
         addCalsBurn = new JButton("Add Calories Burned");
 
         welcome = new JLabel("Welcome to the Health Assistant!");
-        inAddCalsBurn = new JTextField(5); //input box for calories burned
-        inAddCalsConsumed = new JTextField(5); //input box for calories consumed
+        inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
+        inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
 
         GridBagConstraints gridC = new GridBagConstraints();
         gridC.fill = GridBagConstraints.HORIZONTAL;
