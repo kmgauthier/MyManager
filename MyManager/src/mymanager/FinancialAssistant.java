@@ -34,9 +34,12 @@ public class FinancialAssistant extends JFrame {
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
         totalSavings = new JLabel("Total Savings: $"); //should look like "Total Savings: $" + savings
         goalSavings = new JLabel("Goal Savings: $"); //should look like "Goal Savings: $" + goalSavings
+        totalAccount = new JLabel("Total Accounts: ???");
         inDate = new JTextField("MM/DD/YY", 15);
         inDescript = new JTextField("Desciption", 15);
         inSpent = new JTextField("Cost", 15);
+        inSavings = new JTextField("Savings", 15);
+        inIncome = new JTextField("Income?", 15);
         
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
