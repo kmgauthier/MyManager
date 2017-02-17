@@ -32,33 +32,35 @@ public class FinancialAssistant extends JFrame {
         spendHistory = new JButton("Spendings History");
         welcome = new JLabel("Welcome to the Financial Assistant!");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
-        ProfileData storedData = ProfileData.read(); //Load profile to
-        if (storedData != null) {                                             //Load savings goal from profile if there is profile data
+        
+        //total savings and goal savings
+        ProfileData storedData = ProfileData.read();
+        if (storedData != null) {                                             
             FinancialData finData = FinancialData.read();
-            if (finData != null) {    //Check if there is data in the financial data
-                totalSavings = new JLabel("Total Savings: $" + finData.getCurrentSavingsBalance()); //Load savings data from Financial Data
+            if (finData != null) {    
+                totalSavings = new JLabel("Current Savings: $" + finData.getCurrentSavingsBalance());
             } else {
-                totalSavings = new JLabel("Total Savings: $" + storedData.getStartSavings()); //Load starting savings from the profile 
+                totalSavings = new JLabel("Current Savings: $" + storedData.getStartSavings()); 
             }
-            goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal()); //should look like "Goal Savings: $" + goalSavings
-        } else {
-            totalSavings = new JLabel("Total Savings: $0"); //should look like "Total Savings: $" + savings
-            goalSavings = new JLabel("Goal Savings: No Goal Set"); //If there is no profile data this will display
+            goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal()); 
+        } 
+        else {
+            totalSavings = new JLabel("Current Savings: $0"); 
+            goalSavings = new JLabel("Goal Savings: No Goal Set"); 
         }
+        
+        
         totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
         inDescript = new JTextField("Desciption", 15);
         inSpent = new JTextField("Cost", 15);
         inSavings = new JTextField("Savings", 15);
-//        inIncome = new JTextField("Income", 15);
+        inIncome = new JTextField("Income", 15);
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
         gc.insets = new Insets(10, 50, 10, 50);
 
-        gc.gridx = 0;
-        gc.gridy = 0;
-        //frame.add(welcome, gc); //do not really need welcome on every screen?
 
         //display weekly spendings and total savings and goal savings and total account balance
         gc.gridx = 0;
@@ -105,15 +107,15 @@ public class FinancialAssistant extends JFrame {
         gc.gridy = 1;
         frame.add(inSavings, gc);
 
-        /*
-         //adding amount to income/acccount
-         gc.gridx = 1;
-         gc.gridy = 2;
-         frame.add(addIncome, gc);
-         gc.gridx = 0;
-         gc.gridy = 2;
-         frame.add(inIncome, gc);
-         */
+        
+        //adding amount to income/acccount
+        gc.gridx = 1;
+        gc.gridy = 2;
+        frame.add(addIncome, gc);
+        gc.gridx = 0;
+        gc.gridy = 2;
+        frame.add(inIncome, gc);
+     
         //adding amount spent
         gc.gridx = 0;
         gc.gridy = 3;
