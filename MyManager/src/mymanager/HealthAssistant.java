@@ -21,28 +21,48 @@ public class HealthAssistant extends JFrame {
     private JFrame frame = new JFrame();
     private JButton backButton, addCalsConsumed, addCalsBurn;
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
-    private JLabel welcome, netCals, calsToday, BMICalc;
+    private JLabel welcome, netCals, calsToday, BMICalc, calsBurned;
     private HealthData data = new HealthData();
-    private float bmi;
+    private int bmi;
 
     public HealthAssistant() {
-
+        
+        
         ProfileData profileData = ProfileData.read();
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
 
+        //show net calories
         if (HealthData.read() != null) {
             data = HealthData.read();
-            netCals = new JLabel("Net Calories: " + data.getNetCals()); //this should look like "Net Calories: " + userNetCals
+            netCals = new JLabel("Net Calories: " + data.getNetCals()); 
         } else {
-            netCals = new JLabel("Net Calories: "); //this should look like "Net Calories: " + userNetCals
+            netCals = new JLabel("Net Calories: "); 
         }
-        bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
-        calsToday = new JLabel("Calories Today: "); //this should look like "Calories Today: " + totalCals
+        
+        //show calories burned
+        if (HealthData.read() != null) {
+            data = HealthData.read();
+            calsBurned = new JLabel("Calories Burned: " + data.getCalsBurned()); 
+        } else {
+            calsBurned = new JLabel("Calories Burned: "); 
+        }
+        
+        //show calories consumed
+        if (HealthData.read() != null) {
+            data = HealthData.read();
+            calsToday = new JLabel("Calories Consumed: " + data.getCalsConsumed());
+        } else {
+            netCals = new JLabel("Calories Consumed: "); 
+        }
+        
+        
+        //bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
-        BMICalc = new JLabel("BMI: "+ bmi); //this should look like "BMI: " + bmi
+        //BMICalc = new JLabel("BMI: "+ bmi);
+        BMICalc = new JLabel("BMI: ");
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
 
@@ -59,15 +79,18 @@ public class HealthAssistant extends JFrame {
         //frame.add(welcome, gridC); //Not sure we need to right welcome on every screen?
 
         //this block is for displaying net calories, calories consumed for today, and BMI
-        gridC.gridx = 1;
-        gridC.gridy = 0;
-        frame.add(calsToday, gridC);
         gridC.gridx = 0;
         gridC.gridy = 0;
-        frame.add(netCals, gridC);
+        frame.add(calsToday, gridC);
         gridC.gridx = 2;
         gridC.gridy = 0;
+        frame.add(netCals, gridC);
+        gridC.gridx = 3;
+        gridC.gridy = 0;
         frame.add(BMICalc, gridC);
+        gridC.gridx = 1;
+        gridC.gridy = 0;
+        frame.add(calsBurned, gridC);
 
         //back button
         gridC.gridx = 0;
@@ -160,11 +183,11 @@ public class HealthAssistant extends JFrame {
         save.setVisible(true);
     }
     
-    private float calcBMI(Height h, int weight) {
-        float calculatedBMI;
+    private int calcBMI(Height h, int weight) {
+        int calculatedBMI;
         int heightInches = (h.getFoot() * 12) + h.getInches();
         int heightSq = heightInches * heightInches;
-        if ((heightInches * heightInches) > 0) {
+        if ((heightSq) > 0) {
             calculatedBMI = (weight / (heightSq));
             calculatedBMI *= 703;
         } else {
