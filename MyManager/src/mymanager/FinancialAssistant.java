@@ -29,7 +29,7 @@ public class FinancialAssistant extends JFrame {
         addSavings = new JButton("Add Savings");
         addIncome = new JButton("Add Income");
         addSpendings = new JButton("Add Spendings");
-        spendHistory = new JButton("Spendings History");
+        spendHistory = new JButton("Spending History");
         welcome = new JLabel("Welcome to the Financial Assistant!");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
         
