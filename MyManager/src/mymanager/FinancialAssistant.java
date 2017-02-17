@@ -33,24 +33,26 @@ public class FinancialAssistant extends JFrame {
         welcome = new JLabel("Welcome to the Financial Assistant!");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
         
-        //total savings and goal savings
+        //total savings and goal savings and account total
         ProfileData storedData = ProfileData.read();
         if (storedData != null) {                                             
             FinancialData finData = FinancialData.read();
             if (finData != null) {    
-                totalSavings = new JLabel("Current Savings: $" + finData.getCurrentSavingsBalance());
+                totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
+                totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
             } else {
-                totalSavings = new JLabel("Current Savings: $" + storedData.getStartSavings()); 
+                totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings()); 
+                totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
             }
             goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal()); 
         } 
         else {
-            totalSavings = new JLabel("Current Savings: $0"); 
+            totalSavings = new JLabel("Savings Balance: $0"); 
             goalSavings = new JLabel("Goal Savings: No Goal Set"); 
         }
         
         
-        totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
+        //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
         inDescript = new JTextField("Desciption", 15);
         inSpent = new JTextField("Cost", 15);
@@ -77,6 +79,9 @@ public class FinancialAssistant extends JFrame {
         frame.add(weeklySpendings, gc);
 
         //adding amount to savings
+        gc.gridx = 0;
+        gc.gridy = 1;
+        frame.add(inSavings, gc);
         gc.gridx = 1;
         gc.gridy = 1;
         frame.add(addSavings, gc);
@@ -103,18 +108,41 @@ public class FinancialAssistant extends JFrame {
             }
 
         });
-        gc.gridx = 0;
-        gc.gridy = 1;
-        frame.add(inSavings, gc);
-
         
         //adding amount to income/acccount
-        gc.gridx = 1;
-        gc.gridy = 2;
-        frame.add(addIncome, gc);
         gc.gridx = 0;
         gc.gridy = 2;
         frame.add(inIncome, gc);
+        gc.gridx = 1;
+        gc.gridy = 2;
+        frame.add(addIncome, gc);
+        addIncome.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent E){
+                if(inIncome.getText().equals("Income") || Double.parseDouble(inIncome.getText()) < 0)
+                {   
+                    frame.setVisible(false);
+                    errorPrompt();
+                }
+                else{
+                    FinancialData data = FinancialData.read();
+                    if (data != null) {
+                        data.addIncome(Double.parseDouble(inIncome.getText()));
+                        FinancialData.write(data);
+                        frame.setVisible(false);
+                        saveData();
+                    } else {
+                        data = new FinancialData();
+                        FinancialData.write(data);
+                        frame.setVisible(false);
+                        saveData();
+                    }
+                }  
+                
+            }
+        });
+        
+    
      
         //adding amount spent
         gc.gridx = 0;
