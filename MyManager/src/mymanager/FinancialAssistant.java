@@ -16,7 +16,7 @@ public class FinancialAssistant extends JFrame {
 
     private JFrame frame;
     private JButton backButton, addSavings, addIncome, addSpendings, spendHistory;
-    private JLabel welcome, goalSavings, totalSavings, totalAccount, weeklySpendings;
+    private JLabel goalSavings, totalSavings, totalAccount, weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
 
     public FinancialAssistant() {
@@ -30,7 +30,6 @@ public class FinancialAssistant extends JFrame {
         addIncome = new JButton("Add Income");
         addSpendings = new JButton("Add Spendings");
         spendHistory = new JButton("Spending History");
-        welcome = new JLabel("Welcome to the Financial Assistant!");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
         
         //total savings and goal savings and account total
