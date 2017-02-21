@@ -14,7 +14,7 @@ public class ProfileData implements Serializable{
     private int weight, age;
     private double startBalance, startSavings, savingsGoal;
     private Height height;
-    private String firstName, lastName, date, gender;
+    private String firstName, lastName, gender;
     
     
     
