@@ -11,14 +11,16 @@ import java.io.*;
  */
 public class FinancialData implements Serializable{
     
-    private double savingsAmount;
+    private double savingsAmount, accountBalance;
     
     public FinancialData(){
         ProfileData storedData = ProfileData.read();
         if(storedData != null){
-            savingsAmount = storedData.getStartBalance();
+            savingsAmount = storedData.getStartSavings();
+            accountBalance = storedData.getStartBalance();
         } else{
             savingsAmount = 0;
+            accountBalance = 0;
         }
     }
         
@@ -30,8 +32,20 @@ public class FinancialData implements Serializable{
         savingsAmount -= removeAmount;
     }
     
+    public void addIncome(double addAmount){
+        accountBalance += addAmount;
+    }
+    
+    public void removeIncome(double removeAmount){
+        accountBalance -= removeAmount;
+    }
+    
     public double getCurrentSavingsBalance(){
         return savingsAmount;
+    }
+    
+    public double getCurrentAccountBalance(){
+        return accountBalance;
     }
     
     public static void write(FinancialData newData){
