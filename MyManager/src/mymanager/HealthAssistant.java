@@ -23,7 +23,7 @@ public class HealthAssistant extends JFrame {
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
     private JLabel welcome, netCals, calsToday, BMICalc, calsBurned;
     private HealthData data = new HealthData();
-    private int bmi;
+    
 
     public HealthAssistant() {
         
@@ -61,8 +61,8 @@ public class HealthAssistant extends JFrame {
         //bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
-        //BMICalc = new JLabel("BMI: "+ bmi);
-        BMICalc = new JLabel("BMI: ");
+        BMICalc = new JLabel("BMI: "+ calcBMI(profileData));
+        //BMICalc = new JLabel("BMI: " );
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
 
@@ -182,20 +182,20 @@ public class HealthAssistant extends JFrame {
         frame.setVisible(false);
         save.setVisible(true);
     }
-    
-    private int calcBMI(Height h, int weight) {
-        int calculatedBMI;
-        int heightInches = (h.getFoot() * 12) + h.getInches();
-        int heightSq = heightInches * heightInches;
+    // returns BMI front info entered in the myProfile window
+    private double calcBMI(ProfileData p) {
+        double calculatedBMI;
+        double heightInches = (p.getHeight().getFoot()*12 + p.getHeight().getInches());
+        double heightSq = heightInches * heightInches;
+        double weight = p.getWeight();
         if ((heightSq) > 0) {
             calculatedBMI = (weight / (heightSq));
             calculatedBMI *= 703;
         } else {
             calculatedBMI = 0;
         }
-        //bmi = (profileData.getWeight() / (Math.pow( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()), 2)))*703;
-        //bmi = (profileData.getWeight() / ( (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) * (profileData.getHeight().getFoot()*12 + profileData.getHeight().getInches()) ) )*703;
-
+        calculatedBMI = (Math.round(calculatedBMI *100) / 100.0);
         return calculatedBMI;
+        
     }
 }

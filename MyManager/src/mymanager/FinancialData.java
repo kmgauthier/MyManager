@@ -12,6 +12,7 @@ import java.io.*;
 public class FinancialData implements Serializable{
     
     private double savingsAmount, accountBalance;
+    private static final long serialVersionUID = -5508928421573314610L;
     
     public FinancialData(){
         ProfileData storedData = ProfileData.read();
