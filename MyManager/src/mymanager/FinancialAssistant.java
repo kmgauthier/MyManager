@@ -156,6 +156,13 @@ public class FinancialAssistant extends JFrame {
         gc.gridx = 3;
         gc.gridy = 3;
         frame.add(addSpendings, gc);
+        addSpendings.addActionListener(new ActionListener() { //go to SpendingsHistory page
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SpendingData sd = new SpendingData();
+                sd.write(inDate.getText(), inDescript.getText(), Double.parseDouble(inSpent.getText()));
+            }
+        });
 
         //spending history button
         gc.gridx = 1;
