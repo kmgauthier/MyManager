@@ -53,7 +53,7 @@ public class FinancialAssistant extends JFrame {
         
         //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
-        inDescript = new JTextField("Desciption", 15);
+        inDescript = new JTextField("Description", 15);
         inSpent = new JTextField("Cost", 15);
         inSavings = new JTextField("Savings", 15);
         inIncome = new JTextField("Income", 15);
