@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.font.*;
 
 /**
  *
@@ -28,6 +29,10 @@ public class MyManager extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
        
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        Font font2 = new Font("Monotype Corsiva", Font.BOLD, 30);
+        Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
+        
         //frame.getContentPane().setBackground(new Color(102, 213, 247));
         frame.getContentPane().setBackground(new Color(73, 172, 229));
         
@@ -37,10 +42,16 @@ public class MyManager extends JFrame {
         //financialAssistant.setBackground(new Color(99,158, 192));
         financialAssistant.setBackground(new Color(102, 213, 247));
         healthAssistant.setBackground(new Color(102, 213, 247));
+        financialAssistant.setFont(font1);
+        healthAssistant.setFont(font1);
+        
+        
         
         myProfile = new JButton("My Profile");
         myProfile.setBackground(new Color(102, 213, 247));
+        myProfile.setFont(font1);
         welcome = new JLabel("Welcome to My Manager!");
+        welcome.setFont(font2);
         FinancialData storedFinData = FinancialData.read();
         
         if(storedFinData != null){
@@ -63,16 +74,16 @@ public class MyManager extends JFrame {
         gc.gridy = 0; //ADD COMMENT
         frame.add(welcome, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridx = 1;
+        gc.gridy = 2;
         frame.add(netCalories, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 3;
+        gc.gridx = 0;
+        gc.gridy = 2;
         frame.add(currentSavings, gc);
         
 
-        gc.gridx = 1; //ADD COMMENT
+        gc.gridx = 2; //ADD COMMENT
         gc.gridy = 0; //ADD COMMENT
         frame.add(myProfile, gc);
         myProfile.addActionListener(new ActionListener() { //to go to profile page
@@ -108,6 +119,9 @@ public class MyManager extends JFrame {
 
         });
         
+        netCalories.setFont(font3);
+        currentSavings.setFont(font3);
+                
         
         frame.pack(); 
         frame.setLocationRelativeTo(null);
