@@ -31,6 +31,10 @@ public class MyProfile {
         frame = new JFrame("My Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
+        
+        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+       
 
         weight = new JTextField("", 4);
         heightFeet = new JTextField("", 5);
@@ -56,9 +60,27 @@ public class MyProfile {
         startBalanceLabel = new JLabel("Starting Account Balance: $");
         startSaveLabel = new JLabel("Starting Savings Amount: $");
         goalSavingsLabel = new JLabel("Goal Savings: $");
+        
+        weightLabel.setFont(font1);
+        heightLabel.setFont(font1);
+        ageLabel.setFont(font1);
+        nameLabel.setFont(font1);
+        first.setFont(font1);
+        last.setFont(font1);
+        ft.setFont(font1);
+        in.setFont(font1);
+        gender.setFont(font1);
+        startBalanceLabel.setFont(font1);
+        startSaveLabel.setFont(font1);
+        goalSavingsLabel.setFont(font1);
 
         saveButton = new JButton("Save");
         backButton = new JButton("Back");
+        
+        saveButton.setFont(font1);
+        backButton.setFont(font1);
+        saveButton.setBackground(new Color(102, 213, 247));
+        //backButton.setBackground(new Color(102, 213, 247));
 
         storedData = ProfileData.read();
         if (storedData != null) {

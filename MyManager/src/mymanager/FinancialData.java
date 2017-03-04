@@ -49,6 +49,7 @@ public class FinancialData implements Serializable{
         return accountBalance;
     }
     
+    
     public static void write(FinancialData newData){
         OutputStream ops = null;
         ObjectOutputStream objOps = null;

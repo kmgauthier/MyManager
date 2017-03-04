@@ -24,6 +24,10 @@ public class FinancialAssistant extends JFrame {
         frame = new JFrame("Financial Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
+        
+        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
         backButton = new JButton("Back");
         addSavings = new JButton("Add Savings");
@@ -31,6 +35,13 @@ public class FinancialAssistant extends JFrame {
         addSpendings = new JButton("Add Spendings");
         spendHistory = new JButton("Spending History");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
+        
+        backButton.setFont(font1);
+        addSavings.setFont(font1); addSavings.setBackground(new Color(102, 213, 247));
+        addIncome.setFont(font1); addIncome.setBackground(new Color(102, 213, 247));
+        addSpendings.setFont(font1); addSpendings.setBackground(new Color(102, 213, 247));
+        spendHistory.setFont(font1); spendHistory.setBackground(new Color(102, 213, 247));
+        weeklySpendings.setFont(font3);
         
         //total savings and goal savings and account total
         ProfileData storedData = ProfileData.read();
@@ -50,6 +61,9 @@ public class FinancialAssistant extends JFrame {
             goalSavings = new JLabel("Goal Savings: No Goal Set"); 
         }
         
+        totalSavings.setFont(font3);
+        totalAccount.setFont(font3);
+        goalSavings.setFont(font3);
         
         //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);

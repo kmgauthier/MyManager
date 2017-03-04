@@ -32,6 +32,10 @@ public class HealthAssistant extends JFrame {
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
+        
+        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
         //show net calories
         if (HealthData.read() != null) {
@@ -62,11 +66,20 @@ public class HealthAssistant extends JFrame {
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
         BMICalc = new JLabel("BMI: "+ calcBMI(profileData));
-        //BMICalc = new JLabel("BMI: " );
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
+        
+        currentWeight.setFont(font1);
+        backButton.setFont(font1);
+        BMICalc.setFont(font3);
+        addCalsConsumed.setFont(font1);
+        addCalsBurn.setFont(font1);
+        calsToday.setFont(font3);
+        netCals.setFont(font3);
+        calsBurned.setFont(font3);
+        addCalsBurn.setBackground(new Color(102, 213, 247));
+        addCalsConsumed.setBackground(new Color(102, 213, 247));
 
-        welcome = new JLabel("Welcome to the Health Assistant!");
         inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
         inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
 

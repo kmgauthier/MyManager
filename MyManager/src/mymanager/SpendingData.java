@@ -17,19 +17,26 @@ import java.util.ArrayList;
 public class SpendingData {
     
     private String date, description;
-    private double cost;
+    private double cost, spentWeek;
 
     public SpendingData(String newDate, String newDescription, double newCost){
         date = newDate;
         description = newDescription;
         cost = newCost;
+        addSpentWeek(newCost);
     }
     
     public SpendingData(){
         date = "MM/DD/YY";
         description = "";
         cost = 0.0;
+        spentWeek = 0;
     }
+    
+    public void addSpentWeek(double addAmount){
+        spentWeek += addAmount;
+    }
+    
     
     
     //SQL connection stuff
@@ -80,4 +87,7 @@ public class SpendingData {
         return cost;
     }
 
+    public double getSpentWeek(){
+        return spentWeek;
+    }
 }
