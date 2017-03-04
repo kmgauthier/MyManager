@@ -27,11 +27,19 @@ public class MyManager extends JFrame {
         frame = new JFrame("My Manager"); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-
+       
+        //frame.getContentPane().setBackground(new Color(102, 213, 247));
+        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        
         financialAssistant = new JButton("Financial Assistant");
         healthAssistant = new JButton("Health Assistant");
         
+        //financialAssistant.setBackground(new Color(99,158, 192));
+        financialAssistant.setBackground(new Color(102, 213, 247));
+        healthAssistant.setBackground(new Color(102, 213, 247));
+        
         myProfile = new JButton("My Profile");
+        myProfile.setBackground(new Color(102, 213, 247));
         welcome = new JLabel("Welcome to My Manager!");
         FinancialData storedFinData = FinancialData.read();
         
@@ -99,8 +107,9 @@ public class MyManager extends JFrame {
             }
 
         });
-
-        frame.pack(); //comment what does this do?
+        
+        
+        frame.pack(); 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
