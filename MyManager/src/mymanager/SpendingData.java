@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -18,12 +19,11 @@ public class SpendingData {
     
     private String date, description;
     private double cost, spentWeek;
-
+    private ArrayList<SpendingData> data = new ArrayList<SpendingData>();
     public SpendingData(String newDate, String newDescription, double newCost){
         date = newDate;
         description = newDescription;
         cost = newCost;
-        addSpentWeek(newCost);
     }
     
     public SpendingData(){
@@ -33,12 +33,40 @@ public class SpendingData {
         spentWeek = 0;
     }
     
-    public void addSpentWeek(double addAmount){
-        spentWeek += addAmount;
+    public void addSpending(SpendingData spendData){
+
+        
+    }
+    
+    public void write(){
+        
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*    
     //SQL connection stuff
     private Connection con;
     private Statement stmt;
@@ -90,4 +118,6 @@ public class SpendingData {
     public double getSpentWeek(){
         return spentWeek;
     }
+    
+    */
 }
