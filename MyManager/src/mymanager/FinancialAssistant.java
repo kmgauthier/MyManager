@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class FinancialAssistant extends JFrame {
 
@@ -24,7 +27,13 @@ public class FinancialAssistant extends JFrame {
         frame = new JFrame("Financial Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        
+
+        try {
+            frame.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
         frame.getContentPane().setBackground(new Color(73, 172, 229));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
@@ -35,36 +44,39 @@ public class FinancialAssistant extends JFrame {
         addSpendings = new JButton("Add Spendings");
         spendHistory = new JButton("Spending History");
         weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
-        
+
         backButton.setFont(font1);
-        addSavings.setFont(font1); addSavings.setBackground(new Color(102, 213, 247));
-        addIncome.setFont(font1); addIncome.setBackground(new Color(102, 213, 247));
-        addSpendings.setFont(font1); addSpendings.setBackground(new Color(102, 213, 247));
-        spendHistory.setFont(font1); spendHistory.setBackground(new Color(102, 213, 247));
+        addSavings.setFont(font1);
+        addSavings.setBackground(new Color(102, 213, 247));
+        addIncome.setFont(font1);
+        addIncome.setBackground(new Color(102, 213, 247));
+        addSpendings.setFont(font1);
+        addSpendings.setBackground(new Color(102, 213, 247));
+        spendHistory.setFont(font1);
+        spendHistory.setBackground(new Color(102, 213, 247));
         weeklySpendings.setFont(font3);
-        
+
         //total savings and goal savings and account total
         ProfileData storedData = ProfileData.read();
-        if (storedData != null) {                                             
+        if (storedData != null) {
             FinancialData finData = FinancialData.read();
-            if (finData != null) {    
+            if (finData != null) {
                 totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
                 totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
             } else {
-                totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings()); 
+                totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                 totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
             }
-            goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal()); 
-        } 
-        else {
-            totalSavings = new JLabel("Savings Balance: $0"); 
-            goalSavings = new JLabel("Goal Savings: No Goal Set"); 
+            goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal());
+        } else {
+            totalSavings = new JLabel("Savings Balance: $0");
+            goalSavings = new JLabel("Goal Savings: No Goal Set");
         }
-        
+
         totalSavings.setFont(font3);
         totalAccount.setFont(font3);
         goalSavings.setFont(font3);
-        
+
         //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
         inDescript = new JTextField("Description", 15);
@@ -75,7 +87,6 @@ public class FinancialAssistant extends JFrame {
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
         gc.insets = new Insets(10, 50, 10, 50);
-
 
         //display weekly spendings and total savings and goal savings and total account balance
         gc.gridx = 0;
@@ -121,7 +132,7 @@ public class FinancialAssistant extends JFrame {
             }
 
         });
-        
+
         //adding amount to income/acccount
         gc.gridx = 0;
         gc.gridy = 2;
@@ -129,15 +140,13 @@ public class FinancialAssistant extends JFrame {
         gc.gridx = 1;
         gc.gridy = 2;
         frame.add(addIncome, gc);
-        addIncome.addActionListener(new ActionListener(){
+        addIncome.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent E){
-                if(inIncome.getText().equals("Income") || Double.parseDouble(inIncome.getText()) < 0)
-                {   
+            public void actionPerformed(ActionEvent E) {
+                if (inIncome.getText().equals("Income") || Double.parseDouble(inIncome.getText()) < 0) {
                     frame.setVisible(false);
                     errorPrompt();
-                }
-                else{
+                } else {
                     FinancialData data = FinancialData.read();
                     if (data != null) {
                         data.addIncome(Double.parseDouble(inIncome.getText()));
@@ -150,13 +159,11 @@ public class FinancialAssistant extends JFrame {
                         frame.setVisible(false);
                         saveData();
                     }
-                }  
-                
+                }
+
             }
         });
-        
-    
-     
+
         //adding amount spent
         gc.gridx = 0;
         gc.gridy = 3;
@@ -216,6 +223,12 @@ public class FinancialAssistant extends JFrame {
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());
+                
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
 
         GridBagConstraints sc = new GridBagConstraints();
         sc.fill = GridBagConstraints.HORIZONTAL;
@@ -249,6 +262,12 @@ public class FinancialAssistant extends JFrame {
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());
+
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
 
         GridBagConstraints sc = new GridBagConstraints();
         sc.fill = GridBagConstraints.HORIZONTAL;

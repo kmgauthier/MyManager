@@ -8,8 +8,11 @@ package mymanager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -28,6 +31,12 @@ public class SpendingsHistory extends JFrame {
         frame = new JFrame("Spendings History");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
+
+        try {
+            frame.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
 
         date = new JLabel("Date");
         description = new JLabel("Description");
@@ -56,13 +65,13 @@ public class SpendingsHistory extends JFrame {
                 SpendingData newSd = dataArray.remove(0);
                 gc.gridx = 0;
                 gc.gridy = y;
-                frame.add(new JLabel(newSd.getDate()),gc);
+                frame.add(new JLabel(newSd.getDate()), gc);
                 gc.gridx = 1;
                 gc.gridy = y;
-                frame.add(new JLabel(newSd.getDesc()),gc);
+                frame.add(new JLabel(newSd.getDesc()), gc);
                 gc.gridx = 2;
                 gc.gridy = y;
-                frame.add(new JLabel(Double.toString(newSd.getCost())),gc);
+                frame.add(new JLabel(Double.toString(newSd.getCost())), gc);
                 y++;
             }
             gc.gridx = 0;

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.io.*;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -31,10 +32,15 @@ public class MyProfile {
         frame = new JFrame("My Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        
+
+        try {
+            frame.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
         frame.getContentPane().setBackground(new Color(73, 172, 229));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
-       
 
         weight = new JTextField("", 4);
         heightFeet = new JTextField("", 5);
@@ -60,7 +66,7 @@ public class MyProfile {
         startBalanceLabel = new JLabel("Starting Account Balance: $");
         startSaveLabel = new JLabel("Starting Savings Amount: $");
         goalSavingsLabel = new JLabel("Goal Savings: $");
-        
+
         weightLabel.setFont(font1);
         heightLabel.setFont(font1);
         ageLabel.setFont(font1);
@@ -76,7 +82,7 @@ public class MyProfile {
 
         saveButton = new JButton("Save");
         backButton = new JButton("Back");
-        
+
         saveButton.setFont(font1);
         backButton.setFont(font1);
         saveButton.setBackground(new Color(102, 213, 247));
@@ -215,6 +221,12 @@ public class MyProfile {
         JFrame save = new JFrame("Save Successful");
         JButton ok = new JButton("OK");
         JLabel success = new JLabel("Your settings have been saved successfully!");
+
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());

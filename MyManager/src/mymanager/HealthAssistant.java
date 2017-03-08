@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -23,16 +26,20 @@ public class HealthAssistant extends JFrame {
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
     private JLabel welcome, netCals, calsToday, BMICalc, calsBurned;
     private HealthData data = new HealthData();
-    
 
     public HealthAssistant() {
-        
-        
+
         ProfileData profileData = ProfileData.read();
         frame = new JFrame("Health Assistant");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        
+
+        try {
+            frame.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
         frame.getContentPane().setBackground(new Color(73, 172, 229));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
@@ -40,35 +47,34 @@ public class HealthAssistant extends JFrame {
         //show net calories
         if (HealthData.read() != null) {
             data = HealthData.read();
-            netCals = new JLabel("Net Calories: " + data.getNetCals()); 
+            netCals = new JLabel("Net Calories: " + data.getNetCals());
         } else {
-            netCals = new JLabel("Net Calories: "); 
+            netCals = new JLabel("Net Calories: ");
         }
-        
+
         //show calories burned
         if (HealthData.read() != null) {
             data = HealthData.read();
-            calsBurned = new JLabel("Calories Burned: " + data.getCalsBurned()); 
+            calsBurned = new JLabel("Calories Burned: " + data.getCalsBurned());
         } else {
-            calsBurned = new JLabel("Calories Burned: "); 
+            calsBurned = new JLabel("Calories Burned: ");
         }
-        
+
         //show calories consumed
         if (HealthData.read() != null) {
             data = HealthData.read();
             calsToday = new JLabel("Calories Consumed: " + data.getCalsConsumed());
         } else {
-            netCals = new JLabel("Calories Consumed: "); 
+            netCals = new JLabel("Calories Consumed: ");
         }
-        
-        
+
         //bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
         currentWeight = new JTextField(20);
         backButton = new JButton("Back");
-        BMICalc = new JLabel("BMI: "+ calcBMI(profileData));
+        BMICalc = new JLabel("BMI: " + calcBMI(profileData));
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
-        
+
         currentWeight.setFont(font1);
         backButton.setFont(font1);
         BMICalc.setFont(font3);
@@ -133,8 +139,8 @@ public class HealthAssistant extends JFrame {
         gridC.gridx = 0;
         gridC.gridy = 4;
         frame.add(addCalsBurn, gridC);
-        
-         addCalsBurn.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
+
+        addCalsBurn.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
             @Override
             public void actionPerformed(ActionEvent e) {
                 data.addCalsBurned(Integer.parseInt(inAddCalsBurn.getText()));
@@ -143,7 +149,7 @@ public class HealthAssistant extends JFrame {
                 saveData();
             }
         });
-        
+
         gridC.gridx = 1;
         gridC.gridy = 4;
         frame.add(inAddCalsBurn, gridC);
@@ -162,7 +168,6 @@ public class HealthAssistant extends JFrame {
         frame.setVisible(true);
     }
 
-    
     private void saveData() {
         JFrame save = new JFrame("Save Successful");
         JButton ok = new JButton("OK");
@@ -170,6 +175,12 @@ public class HealthAssistant extends JFrame {
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());
+
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
 
         GridBagConstraints sc = new GridBagConstraints();
         sc.fill = GridBagConstraints.HORIZONTAL;
@@ -195,10 +206,11 @@ public class HealthAssistant extends JFrame {
         frame.setVisible(false);
         save.setVisible(true);
     }
+
     // returns BMI front info entered in the myProfile window
     private double calcBMI(ProfileData p) {
         double calculatedBMI;
-        double heightInches = (p.getHeight().getFoot()*12 + p.getHeight().getInches());
+        double heightInches = (p.getHeight().getFoot() * 12 + p.getHeight().getInches());
         double heightSq = heightInches * heightInches;
         double weight = p.getWeight();
         if ((heightSq) > 0) {
@@ -207,8 +219,8 @@ public class HealthAssistant extends JFrame {
         } else {
             calculatedBMI = 0;
         }
-        calculatedBMI = (Math.round(calculatedBMI *100) / 100.0);
+        calculatedBMI = (Math.round(calculatedBMI * 100) / 100.0);
         return calculatedBMI;
-        
+
     }
 }
