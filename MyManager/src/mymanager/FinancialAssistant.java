@@ -19,7 +19,7 @@ public class FinancialAssistant extends JFrame {
 
     private JFrame frame;
     private JButton backButton, addSavings, addIncome, addSpendings, spendHistory;
-    private JLabel goalSavings, totalSavings, totalAccount, weeklySpendings;
+    private JLabel goalSavings, totalSavings, totalAccount; //weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
 
     public FinancialAssistant() {
@@ -43,7 +43,7 @@ public class FinancialAssistant extends JFrame {
         addIncome = new JButton("Add Income");
         addSpendings = new JButton("Add Spendings");
         spendHistory = new JButton("Spending History");
-        weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
+        //weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
 
         backButton.setFont(font1);
         addSavings.setFont(font1);
@@ -54,7 +54,7 @@ public class FinancialAssistant extends JFrame {
         addSpendings.setBackground(new Color(102, 213, 247));
         spendHistory.setFont(font1);
         spendHistory.setBackground(new Color(102, 213, 247));
-        weeklySpendings.setFont(font3);
+        //weeklySpendings.setFont(font3);
 
         //total savings and goal savings and account total
         ProfileData storedData = ProfileData.read();
@@ -98,9 +98,9 @@ public class FinancialAssistant extends JFrame {
         gc.gridx = 2;
         gc.gridy = 0;
         frame.add(totalAccount, gc); //total money in account, not savings
-        gc.gridx = 3;
-        gc.gridy = 0;
-        frame.add(weeklySpendings, gc);
+        //gc.gridx = 3;
+        //gc.gridy = 0;
+        //frame.add(weeklySpendings, gc);
 
         //adding amount to savings
         gc.gridx = 0;
