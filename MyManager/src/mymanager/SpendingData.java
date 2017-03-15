@@ -15,7 +15,7 @@ import java.io.*;
  *
  * @author Matt
  */
-public class SpendingData {
+public class SpendingData implements Serializable {
     
     private String date, description;
     private double cost, spentWeek;
@@ -38,34 +38,48 @@ public class SpendingData {
         
     }
     
-    public void write(){
+    public void write(String date, String description, double amount){
+        SpendingData sd = new SpendingData(date, description, amount);
+        try {
+            FileOutputStream fileOutSpending = new FileOutputStream("spending.ser");
+            ObjectOutputStream outSpending = new ObjectOutputStream(fileOutSpending);
+             outSpending.writeObject(sd);
+            outSpending.close();
+            fileOutSpending.close();
+            System.out.printf("Serialized spending data is saved in spending.ser");
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
         
     }
     
+    // private ArrayList<SpendingData> dataArray = null;
+    public ArrayList<SpendingData> read(){
+        ArrayList<SpendingData> alsd = new ArrayList<SpendingData>();
+        try {
+            File file = new File("spending.ser");
+            FileInputStream fileInSpending = new FileInputStream(file);
+            ObjectInputStream inSpending = new ObjectInputStream(fileInSpending);
+            SpendingData sd =null;
+            while(file.canRead()){
+                sd = (SpendingData) inSpending.readObject();
+                alsd.add(sd);
+            }
+            
+            
+            inSpending.close();
+            fileInSpending.close();
+            System.out.printf("Serialized student data is saved in spending.ser");
+        }catch(IOException e) {
+            e.printStackTrace();
+        }catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return alsd;
+    }
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /*    
     //SQL connection stuff
     private Connection con;
