@@ -35,7 +35,7 @@ public class HealthAssistant extends JFrame {
         frame.setLayout(new GridBagLayout());
 
         try {
-            frame.setIconImage(ImageIO.read(new File("logo.png")));
+            frame.setIconImage(ImageIO.read(new File("newLogo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
