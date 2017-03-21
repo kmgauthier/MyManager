@@ -6,10 +6,10 @@ import java.io.*;
  */
 public class HealthData implements Serializable {
     
-    private int calsBurned, calsConsumed;
+    private int calsBurned, calsConsumed;//creating private integers
     private int netCals;
     
-    public HealthData(int newCalsBurned, int newCalsConsumed){
+    public HealthData(int newCalsBurned, int newCalsConsumed){//creating constructor HealthData
         addCalsBurned(newCalsBurned);
         addCalsConsumed(newCalsConsumed);
     }
@@ -20,7 +20,7 @@ public class HealthData implements Serializable {
         netCals = 0;
     }
     
-    public void addCalsBurned(int newCalsBurned){
+    public void addCalsBurned(int newCalsBurned){//addCalsBurned method
         if(newCalsBurned >= 0){
             calsBurned += newCalsBurned;
             netCals -= newCalsBurned;
@@ -29,7 +29,7 @@ public class HealthData implements Serializable {
         }
     }
     
-    public void addCalsConsumed(int newCalsConsumed){
+    public void addCalsConsumed(int newCalsConsumed){//addCalsConsumed method
         if(newCalsConsumed >= 0){
             calsConsumed += newCalsConsumed;
             calcNetCals();
@@ -38,25 +38,25 @@ public class HealthData implements Serializable {
         }
     }
     
-    public int getCalsBurned(){
+    public int getCalsBurned(){//getCalsBurned method
         return calsBurned;
     }
     
-    public int getCalsConsumed(){
+    public int getCalsConsumed(){//getCalsConsumed method
         return calsConsumed;
     }
     
-    public void calcNetCals(){
+    public void calcNetCals(){//method to calculate net calories
         
         netCals = calsConsumed - calsBurned;
         
     }
     
-    public int getNetCals(){
+    public int getNetCals(){//method to get Net Calories
         return netCals;
     }
     
-    public static void write(HealthData data){
+    public static void write(HealthData data){//method to write health data to "health_storage.txt" file
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -74,7 +74,7 @@ public class HealthData implements Serializable {
         
     }
 
-    public static HealthData read(){
+    public static HealthData read(){//method to read data from text file
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         HealthData data = null;

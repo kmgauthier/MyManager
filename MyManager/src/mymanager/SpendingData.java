@@ -17,10 +17,10 @@ import java.io.*;
  */
 public class SpendingData implements Serializable {
     
-    private String date, description;
-    private double cost, spentWeek;
-    private ArrayList<SpendingData> data = new ArrayList<SpendingData>();
-    public SpendingData(String newDate, String newDescription, double newCost){
+    private String date, description;//creating private string variables
+    private double cost, spentWeek;//creating private double variables
+    private ArrayList<SpendingData> data = new ArrayList<SpendingData>();//creating private array to hold spending data
+    public SpendingData(String newDate, String newDescription, double newCost){//creating public SpendingData constructor with parameters
         date = newDate;
         description = newDescription;
         cost = newCost;
@@ -38,7 +38,7 @@ public class SpendingData implements Serializable {
         
     }
     
-    public void write(String date, String description, double amount){
+    public void write(String date, String description, double amount){//method to write spending data to server
         SpendingData sd = new SpendingData(date, description, amount);
         try {
             FileOutputStream fileOutSpending = new FileOutputStream("spending.ser");
@@ -54,7 +54,7 @@ public class SpendingData implements Serializable {
     }
     
     // private ArrayList<SpendingData> dataArray = null;
-    public ArrayList<SpendingData> read(){
+    public ArrayList<SpendingData> read(){//method to read spending data from array
         ArrayList<SpendingData> alsd = new ArrayList<SpendingData>();
         try {
             File file = new File("spending.ser");
