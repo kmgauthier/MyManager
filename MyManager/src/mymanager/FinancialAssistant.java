@@ -198,12 +198,12 @@ public class FinancialAssistant extends JFrame {
                         data.removeIncome(amount);
                         FinancialData.write(data);
                         frame.setVisible(false);
-                        saveData();
+                        saveDataSpend();
                     } else {
                         data = new FinancialData();
                         FinancialData.write(data);
                         frame.setVisible(false);
-                        saveData();
+                        saveDataSpend();
                     }
                 }
             }
@@ -292,6 +292,45 @@ public class FinancialAssistant extends JFrame {
         save.setVisible(true);
     }
 
+    private void saveDataSpend() {
+        JFrame save = new JFrame("Spending Added Successful");
+        JButton ok = new JButton("OK");
+        JLabel success = new JLabel("$" + inSpent.getText() + " has been removed from your account balance");
+
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        save.setLayout(new GridBagLayout());
+                
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        GridBagConstraints sc = new GridBagConstraints();
+        sc.fill = GridBagConstraints.HORIZONTAL;
+        sc.insets = new Insets(10, 2, 10, 2); //TOP, LEFT, BOTTOM, RIGHT
+
+        sc.gridx = 0;
+        sc.gridy = 0;
+        save.add(success, sc);
+        sc.gridx = 0;
+        sc.gridy = 1;
+        save.add(ok, sc);
+
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save.setVisible(false);
+                new FinancialAssistant();
+            }
+        });
+
+        save.pack();
+        save.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        save.setVisible(true);
+    }
+    
     private void errorPrompt() {
         JFrame save = new JFrame("There was an error");
         JButton ok = new JButton("OK");
