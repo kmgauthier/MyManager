@@ -154,8 +154,8 @@ public class HealthAssistant extends JFrame {
         });
 
         //resetting the calories
-        gridC.gridx = 2;
-        gridC.gridy = 4;
+        gridC.gridx = 1;
+        gridC.gridy = 5;
         frame.add(resetCals, gridC);
         resetCals.addActionListener(new ActionListener() //reset the calorie data
         {
