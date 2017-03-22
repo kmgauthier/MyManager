@@ -11,10 +11,10 @@ import java.io.*;
  */
 public class FinancialData implements Serializable{
     
-    private double savingsAmount, accountBalance;//creating private double variables
+    private double savingsAmount, accountBalance;
     private static final long serialVersionUID = -5508928421573314610L;
     
-    public FinancialData(){//constructor for FinancialData
+    public FinancialData(){
         ProfileData storedData = ProfileData.read();
         if(storedData != null){
             savingsAmount = storedData.getStartSavings();
@@ -25,32 +25,32 @@ public class FinancialData implements Serializable{
         }
     }
         
-    public void addSavings(double addAmount){//addSavings method
+    public void addSavings(double addAmount){
         savingsAmount += addAmount;
     }
     
-    public void removeSavings(double removeAmount){//removeSavings method
+    public void removeSavings(double removeAmount){
         savingsAmount -= removeAmount;
     }
     
-    public void addIncome(double addAmount){//addIncome method
+    public void addIncome(double addAmount){
         accountBalance += addAmount;
     }
     
-    public void removeIncome(double removeAmount){//removeAmount method
+    public void removeIncome(double removeAmount){
         accountBalance -= removeAmount;
     }
     
-    public double getCurrentSavingsBalance(){//method to get Current Savings Balance
+    public double getCurrentSavingsBalance(){
         return savingsAmount;
     }
     
-    public double getCurrentAccountBalance(){//method to get Current Account Balance
+    public double getCurrentAccountBalance(){
         return accountBalance;
     }
     
     
-    public static void write(FinancialData newData){//method to write financial data to text file
+    public static void write(FinancialData newData){
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -67,7 +67,7 @@ public class FinancialData implements Serializable{
         }
     }
     
-    public static FinancialData read(){//method to read financial data from text file
+    public static FinancialData read(){
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         FinancialData data = null;

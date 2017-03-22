@@ -20,45 +20,45 @@ import javax.imageio.ImageIO;
  */
 public class SpendingsHistory extends JFrame {
 
-    private JFrame frame;//creates private jframe
-    private JLabel date, description, cost;//creates private labels
-    private JButton backButton;//creates private button
-    private SpendingData sd = new SpendingData();//creates private object of SpendingData class
-    private ArrayList<SpendingData> dataArray = null;//creates private array
+    private JFrame frame;
+    private JLabel date, description, cost;
+    private JButton backButton;
+    private SpendingData sd = new SpendingData();
+    private ArrayList<SpendingData> dataArray = null;
 
     public SpendingsHistory() {
 
-        frame = new JFrame("Spendings History");//declares jframe titled Spendings History
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
-        frame.setLayout(new GridBagLayout());//sets layout to gridbag layout
+        frame = new JFrame("Spendings History");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
 
-        try {//sets icon image to mymanager logo
-            frame.setIconImage(ImageIO.read(new File("newLogo.png")));
+        try {
+            frame.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
 
-        date = new JLabel("Date");//declares date label
-        description = new JLabel("Description");//declares description label
-        cost = new JLabel("Cost");//declares cost label
-        backButton = new JButton("Back");//declares back button
+        date = new JLabel("Date");
+        description = new JLabel("Description");
+        cost = new JLabel("Cost");
+        backButton = new JButton("Back");
 
-        GridBagConstraints gc = new GridBagConstraints();//creates new gridbagconstraints
-        gc.fill = GridBagConstraints.HORIZONTAL;//fills gridbagconstraints
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.fill = GridBagConstraints.HORIZONTAL;
         gc.insets = new Insets(10, 50, 10, 50);
 
         //headers to the history
         gc.gridx = 0;
         gc.gridy = 0;
-        frame.add(date, gc);//adding date label to gridbag layout
+        frame.add(date, gc);
         gc.gridx = 1;
         gc.gridy = 0;
-        frame.add(description, gc);//adding description label to gridbag layout
+        frame.add(description, gc);
         gc.gridx = 2;
         gc.gridy = 0;
-        frame.add(cost, gc);//adding cost label to gridbag layout
+        frame.add(cost, gc);
 
-        dataArray = sd.read();//reads data array
+        dataArray = sd.read();
         if (dataArray != null) {
             int y = 1;
             while (!dataArray.isEmpty()) {
@@ -76,19 +76,19 @@ public class SpendingsHistory extends JFrame {
             }
             gc.gridx = 0;
             gc.gridy = y;
-            frame.add(backButton, gc);//adding back button to gridbag layout
+            frame.add(backButton, gc);
         } else {
 
             //back button
             gc.gridx = 0;
             gc.gridy = 3;
-            frame.add(backButton, gc);//adding back button to gridbag layout
+            frame.add(backButton, gc);
         }
-        backButton.addActionListener(new ActionListener() { //go to home page           //Action Listener method for back button
+        backButton.addActionListener(new ActionListener() { //go to home page
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);//sets visibility of spending history page to false
-                new FinancialAssistant();//returns user to financial assistant page
+                frame.setVisible(false);
+                new FinancialAssistant();
             }
 
         });
