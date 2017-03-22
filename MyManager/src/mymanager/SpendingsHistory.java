@@ -31,6 +31,10 @@ public class SpendingsHistory extends JFrame {
         frame = new JFrame("Spendings History");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
+        
+        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
         try {
             frame.setIconImage(ImageIO.read(new File("logo.png")));
@@ -41,7 +45,7 @@ public class SpendingsHistory extends JFrame {
         date = new JLabel("Date");
         description = new JLabel("Description");
         cost = new JLabel("Cost");
-        backButton = new JButton("Back");
+        backButton = new JButton("Back"); backButton.setFont(font1);
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
