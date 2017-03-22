@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 public class FinancialAssistant extends JFrame {
 
     private JFrame frame;
-    private JButton backButton, addSavings, addIncome, addSpendings, spendHistory;
+    private JButton backButton, addSavings, addIncome, addSpendings, spendHistory, resetSpendings;
     private JLabel goalSavings, totalSavings, totalAccount; //weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
 
@@ -43,6 +43,7 @@ public class FinancialAssistant extends JFrame {
         addIncome = new JButton("Add Income");
         addSpendings = new JButton("Add Spendings");
         spendHistory = new JButton("Spending History");
+        resetSpendings = new JButton("Reset Spending Data");
         //weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
 
         backButton.setFont(font1);
@@ -54,6 +55,7 @@ public class FinancialAssistant extends JFrame {
         addSpendings.setBackground(new Color(102, 213, 247));
         spendHistory.setFont(font1);
         spendHistory.setBackground(new Color(102, 213, 247));
+        resetSpendings.setBackground(new Color(102, 213, 247)); resetSpendings.setFont(font1);
         //weeklySpendings.setFont(font3);
 
         //total savings and goal savings and account total
@@ -185,15 +187,20 @@ public class FinancialAssistant extends JFrame {
             }
         });
 
-        //spending history button
         gc.gridx = 1;
         gc.gridy = 6;
-        frame.add(spendHistory, gc);
+        frame.add(resetSpendings, gc);
+        resetSpendings.addActionListener(new ActionListener() { //reset spending data
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SpendingData spendD = new SpendingData();
+                spendD.reset();
+            }
+        });
 
         gc.gridx = 0;
         gc.gridy = 6;
         frame.add(backButton, gc);
-
         backButton.addActionListener(new ActionListener() { //go to home page
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -203,6 +210,10 @@ public class FinancialAssistant extends JFrame {
 
         });
 
+        //spending history button
+        gc.gridx = 1;
+        gc.gridy = 6;
+        frame.add(spendHistory, gc);
         spendHistory.addActionListener(new ActionListener() { //go to SpendingsHistory page
             @Override
             public void actionPerformed(ActionEvent e) {

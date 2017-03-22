@@ -20,6 +20,12 @@ public class HealthData implements Serializable {
         netCals = 0;
     }
     
+    public void reset(){
+        calsBurned = 0;
+        calsConsumed = 0;
+        netCals = 0;
+    }
+    
     public void addCalsBurned(int newCalsBurned){
         if(newCalsBurned >= 0){
             calsBurned += newCalsBurned;

@@ -38,6 +38,10 @@ public class SpendingData implements Serializable {
         
     }
     
+    public void reset(){ //reset the spending data
+        data = new ArrayList<SpendingData>();
+    }
+    
     public String getDate(){
         return date;
     }

@@ -22,7 +22,7 @@ import javax.imageio.ImageIO;
 public class HealthAssistant extends JFrame {
 
     private JFrame frame = new JFrame();
-    private JButton backButton, addCalsConsumed, addCalsBurn;
+    private JButton backButton, addCalsConsumed, addCalsBurn, resetCals;
     private JTextField currentWeight, inAddCalsBurn, inAddCalsConsumed;
     private JLabel welcome, netCals, calsToday, BMICalc, calsBurned;
     private HealthData data = new HealthData();
@@ -74,6 +74,7 @@ public class HealthAssistant extends JFrame {
         BMICalc = new JLabel("BMI: " + calcBMI(profileData));
         addCalsConsumed = new JButton("Add Calories");
         addCalsBurn = new JButton("Add Calories Burned");
+        resetCals = new JButton("Reset Calorie Data");
 
         currentWeight.setFont(font1);
         backButton.setFont(font1);
@@ -85,6 +86,7 @@ public class HealthAssistant extends JFrame {
         calsBurned.setFont(font3);
         addCalsBurn.setBackground(new Color(102, 213, 247));
         addCalsConsumed.setBackground(new Color(102, 213, 247));
+        resetCals.setBackground(new Color(102, 213, 247)); resetCals.setFont(font1);
 
         inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
         inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
@@ -150,10 +152,23 @@ public class HealthAssistant extends JFrame {
             }
         });
 
+        gridC.gridx = 2;
+        gridC.gridy = 4;
+        frame.add(resetCals, gridC);
+        resetCals.addActionListener(new ActionListener() //reset the calorie data
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                data.reset();
+                HealthData.write(data);
+                netCals = new JLabel("Net Calories: " + data.getNetCals());
+                saveData();
+            }
+        });
+        
         gridC.gridx = 1;
         gridC.gridy = 4;
         frame.add(inAddCalsBurn, gridC);
-
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
