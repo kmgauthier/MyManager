@@ -6,6 +6,9 @@ import java.io.*;
  */
 public class HealthData implements Serializable {
     
+    private static final long serialVersionUID = -7346543021312279802L;
+
+    
     private int calsBurned, calsConsumed;
     private int netCals;
     

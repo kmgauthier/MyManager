@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
  * @author Matthew Fair
  */
 public class HealthAssistant extends JFrame {
+    private static final long serialVersionUID = -7346543021312279802L;
 
     private JFrame frame = new JFrame();
     private JButton backButton, addCalsConsumed, addCalsBurn, resetCals;
