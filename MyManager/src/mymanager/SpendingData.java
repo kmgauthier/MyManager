@@ -38,6 +38,17 @@ public class SpendingData implements Serializable {
         
     }
     
+    public String getDate(){
+        return date;
+    }
+    
+    public String getDesc(){
+        return description;
+    }
+    
+    public double getCost(){
+        return cost;
+    }
     public void write(String date, String description, double amount){
         SpendingData sd = new SpendingData(date, description, amount);
         try {
