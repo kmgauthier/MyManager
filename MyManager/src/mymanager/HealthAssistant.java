@@ -152,6 +152,7 @@ public class HealthAssistant extends JFrame {
             }
         });
 
+        //resetting the calories
         gridC.gridx = 2;
         gridC.gridy = 4;
         frame.add(resetCals, gridC);
@@ -159,6 +160,7 @@ public class HealthAssistant extends JFrame {
         {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //maybe just delete the file instead of overwrite?
                 data.reset();
                 HealthData.write(data);
                 netCals = new JLabel("Net Calories: " + data.getNetCals());

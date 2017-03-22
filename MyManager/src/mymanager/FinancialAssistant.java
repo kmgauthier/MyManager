@@ -187,14 +187,16 @@ public class FinancialAssistant extends JFrame {
             }
         });
 
-        gc.gridx = 1;
+        gc.gridx = 2;
         gc.gridy = 6;
         frame.add(resetSpendings, gc);
         resetSpendings.addActionListener(new ActionListener() { //reset spending data
             @Override
             public void actionPerformed(ActionEvent e){
+                //maybe just delete the file instead of overwriting with empty
                 SpendingData spendD = new SpendingData();
                 spendD.reset();
+                //spendD.write(); 
             }
         });
 
