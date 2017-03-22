@@ -22,7 +22,7 @@ public class SpendingsHistory extends JFrame {
 
     private JFrame frame;
     private JLabel date, description, cost;
-    private JButton backButton;
+    private JButton backButton, resetSpending;
     private SpendingData sd = new SpendingData();
     private ArrayList<SpendingData> dataArray = null;
 
@@ -46,6 +46,8 @@ public class SpendingsHistory extends JFrame {
         description = new JLabel("Description");
         cost = new JLabel("Cost");
         backButton = new JButton("Back"); backButton.setFont(font1);
+        resetSpending = new JButton("Reset Spending History");
+        resetSpending.setFont(font1); resetSpending.setBackground(new Color(102, 213, 247));
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -96,6 +98,33 @@ public class SpendingsHistory extends JFrame {
             }
 
         });
+        
+        gc.gridx = 1;
+        gc.gridy = 3;
+        frame.add(resetSpending, gc);
+        resetSpending.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.removeAll();
+                gc.gridx = 0;
+                gc.gridy = 0;
+                frame.add(date, gc);
+                gc.gridx = 1;
+                gc.gridy = 0;
+                frame.add(description, gc);
+                gc.gridx = 2;
+                gc.gridy = 0;
+                frame.add(cost, gc);
+                gc.gridx = 0;
+                gc.gridy = 3;
+                frame.add(backButton, gc);
+                gc.gridx = 1;
+                gc.gridy = 3;
+                frame.add(resetSpending, gc);
+                
+            }
+        });
+        
 
         frame.pack();
         frame.setLocationRelativeTo(null);

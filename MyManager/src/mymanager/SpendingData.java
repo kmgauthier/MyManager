@@ -37,11 +37,6 @@ public class SpendingData implements Serializable {
         
     //}
     
-    public void reset(){ //reset the spending data
-        File theFile = new File("spending.ser");
-        theFile.delete();
-        //data = new ArrayList<SpendingData>();
-    }
     
     public String getDate(){
         return date;
