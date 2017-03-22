@@ -161,8 +161,8 @@ public class HealthAssistant extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //maybe just delete the file instead of overwrite?
-                data.reset();
-                HealthData.write(data);
+                //data.reset();
+                HealthData.write(data.reset());
                 netCals = new JLabel("Net Calories: " + data.getNetCals());
                 saveData();
             }

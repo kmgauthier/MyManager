@@ -33,13 +33,14 @@ public class SpendingData implements Serializable {
         spentWeek = 0;
     }
     
-    public void addSpending(SpendingData spendData){
-
+    //public void addSpending(SpendingData spendData){
         
-    }
+    //}
     
     public void reset(){ //reset the spending data
-        data = new ArrayList<SpendingData>();
+        File theFile = new File("spending.ser");
+        theFile.delete();
+        //data = new ArrayList<SpendingData>();
     }
     
     public String getDate(){

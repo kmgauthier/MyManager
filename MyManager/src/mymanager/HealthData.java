@@ -20,10 +20,12 @@ public class HealthData implements Serializable {
         netCals = 0;
     }
     
-    public void reset(){
-        calsBurned = 0;
-        calsConsumed = 0;
-        netCals = 0;
+    public HealthData reset(){
+        HealthData hd = new HealthData();
+        //calsBurned = 0;
+        //calsConsumed = 0;
+        //netCals = 0;
+        return hd;
     }
     
     public void addCalsBurned(int newCalsBurned){
