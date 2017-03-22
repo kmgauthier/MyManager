@@ -121,6 +121,7 @@ public class SpendingsHistory extends JFrame {
                 gc.gridx = 1;
                 gc.gridy = 3;
                 frame.add(resetSpending, gc);
+                resetPrompt();
                 
             }
         });
@@ -130,5 +131,43 @@ public class SpendingsHistory extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+    }
+    private void resetPrompt() {
+        JFrame save = new JFrame("Reset Successful");
+        JButton ok = new JButton("OK");
+        JLabel success = new JLabel("Spending history has been reset.");
+
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        save.setLayout(new GridBagLayout());
+
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        GridBagConstraints sc = new GridBagConstraints();
+        sc.fill = GridBagConstraints.HORIZONTAL;
+        sc.insets = new Insets(10, 2, 10, 2); //TOP, LEFT, BOTTOM, RIGHT
+
+        sc.gridx = 0;
+        sc.gridy = 0;
+        save.add(success, sc);
+        sc.gridx = 0;
+        sc.gridy = 1;
+        save.add(ok, sc);
+
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save.setVisible(false);
+                new FinancialAssistant();
+            }
+        });
+
+        save.pack();
+        save.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        save.setVisible(true);
     }
 }
