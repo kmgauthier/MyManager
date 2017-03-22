@@ -14,6 +14,7 @@ import java.awt.GridBagConstraints;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.util.ArrayList;
 
 public class FinancialAssistant extends JFrame {
 
@@ -21,6 +22,7 @@ public class FinancialAssistant extends JFrame {
     private JButton backButton, addSavings, addIncome, addSpendings, spendHistory, resetSpendings;
     private JLabel goalSavings, totalSavings, totalAccount; //weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
+    private ArrayList<SpendingData> spendingHistory =  new ArrayList<SpendingData>();
 
     public FinancialAssistant() {
 
@@ -182,10 +184,32 @@ public class FinancialAssistant extends JFrame {
         addSpendings.addActionListener(new ActionListener() { //go to SpendingsHistory page
             @Override
             public void actionPerformed(ActionEvent e) {
-                SpendingData sd = new SpendingData();
-                sd.write(inDate.getText(), inDescript.getText(), Double.parseDouble(inSpent.getText()));
+               
+             if (inSpent.getText().equals("Cost") || Double.parseDouble(inSpent.getText()) < 0) {
+                    frame.setVisible(false);
+                    errorPrompt();
+                } else {
+                  double amount = Double.parseDouble(inSpent.getText());
+                SpendingData sd = new SpendingData(inDate.getText(), inDescript.getText(), amount);
+               // sd.addSpending(sd);
+               spendingHistory.add(sd); // loop thru for each 
+                    FinancialData data = FinancialData.read();
+                    if (data != null) {
+                        data.removeIncome(amount);
+                        FinancialData.write(data);
+                        frame.setVisible(false);
+                        saveData();
+                    } else {
+                        data = new FinancialData();
+                        FinancialData.write(data);
+                        frame.setVisible(false);
+                        saveData();
+                    }
+                }
             }
         });
+
+             
 
         gc.gridx = 2;
         gc.gridy = 6;
