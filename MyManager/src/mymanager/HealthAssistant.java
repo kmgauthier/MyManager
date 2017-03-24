@@ -87,8 +87,8 @@ public class HealthAssistant extends JFrame {
         calsBurned.setFont(font3);
         addCalsBurn.setBackground(new Color(102, 213, 247));
         addCalsConsumed.setBackground(new Color(102, 213, 247));
-        resetCals.setBackground(new Color(102, 213, 247)); resetCals.setFont(font1);
-
+        resetCals.setBackground(new Color(255, 0, 0)); resetCals.setFont(font1);
+        resetCals.setForeground(new Color(0, 0, 0));
         inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
         inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
 

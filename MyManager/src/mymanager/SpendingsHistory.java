@@ -47,7 +47,8 @@ public class SpendingsHistory extends JFrame {
         cost = new JLabel("Cost");
         backButton = new JButton("Back"); backButton.setFont(font1);
         resetSpending = new JButton("Reset Spending History");
-        resetSpending.setFont(font1); resetSpending.setBackground(new Color(102, 213, 247));
+        resetSpending.setFont(font1); resetSpending.setBackground(new Color(255, 0, 0));
+        resetSpending.setForeground(new Color(0,0,0));
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
