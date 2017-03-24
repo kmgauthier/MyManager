@@ -12,6 +12,7 @@ import java.io.*;
 public class FinancialData implements Serializable{
     
     private double savingsAmount, accountBalance;
+    private boolean justReset; //boolean value to tell whether it was just reset
     private static final long serialVersionUID = -5508928421573314610L;
     
     public FinancialData(){
@@ -24,21 +25,30 @@ public class FinancialData implements Serializable{
             accountBalance = 0;
         }
     }
+    public FinancialData(boolean reset){
+        savingsAmount = 0;
+        accountBalance = 0;
+        justReset = true;
+    }
         
     public void addSavings(double addAmount){
         savingsAmount += addAmount;
+        justReset = false;
     }
     
     public void removeSavings(double removeAmount){
         savingsAmount -= removeAmount;
+        justReset = false;
     }
     
     public void addIncome(double addAmount){
         accountBalance += addAmount;
+        justReset = false;
     }
     
     public void removeIncome(double removeAmount){
         accountBalance -= removeAmount;
+        justReset = false;
     }
     
     public double getCurrentSavingsBalance(){
@@ -91,6 +101,10 @@ public class FinancialData implements Serializable{
         }
         
         return data;
+    }
+    
+    public boolean getResetStatus(){
+        return justReset;
     }
     
 }

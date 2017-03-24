@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.io.*;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
@@ -22,7 +23,7 @@ public class MyProfile {
 
     private JFrame frame;//creating jframe for MyProfile page
     private JTextField weight, heightFeet, heightInches, age, firstName, lastName, goalSavings, startingSavings, startingBalance;//creating textfields for profile page
-    private JButton saveButton, backButton;//creating buttons for profile page
+    private JButton saveButton, backButton, resetButton;//creating buttons for profile page
     private JLabel weightLabel, heightLabel, ft, in, ageLabel, nameLabel, first, last, gender, goalSavingsLabel, startBalanceLabel, startSaveLabel;//creating labels for profile page
     private ProfileData storedData;//creating object of class ProfileData
     private JComboBox genderBox;//creating combo box for gender
@@ -82,11 +83,13 @@ public class MyProfile {
 
         saveButton = new JButton("Save");//declaring save button
         backButton = new JButton("Back");//declaring back button
+        resetButton = new JButton("RESET ALL"); //Declare reset button for master reset of program
 
         saveButton.setFont(font1);//setting save button font as font 1
         backButton.setFont(font1);//setting back button font as font 1
         saveButton.setBackground(new Color(102, 213, 247));//setting background color of save button
-        //backButton.setBackground(new Color(102, 213, 247));
+        resetButton.setBackground(new Color(255, 0, 0)); //Set color to red
+        resetButton.setForeground(new Color(0, 0, 0));
 
         storedData = ProfileData.read();//saving data from Profile Data into storedData
         if (storedData != null) {//to automatically display the user's saved data in the textfields
@@ -180,6 +183,10 @@ public class MyProfile {
         gc.gridx = 1;
         gc.gridy = 11;
         frame.add(saveButton, gc);//adding save button to gridbag layout
+        
+        gc.gridx = 2;
+        gc.gridy = 11;
+        frame.add(resetButton, gc); //Put the rest button on the screen
 
         backButton.addActionListener(new ActionListener() {//Action Listener method for back button 
             @Override
@@ -196,7 +203,18 @@ public class MyProfile {
                 saveData();//calls saveData method when user clicks save button
             }
         });
-
+        
+        resetButton.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            SpendingData.write(new ArrayList<SpendingData>());
+            FinancialData.write(new FinancialData(true));
+            HealthData.write(new HealthData());
+            ProfileData.write(new ProfileData());
+            frame.setVisible(false);
+            resetPrompt();
+        }
+        });
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -255,6 +273,45 @@ public class MyProfile {
         frame.setVisible(false);
         save.setVisible(true);
 
+    }
+    
+    private void resetPrompt() {
+        JFrame save = new JFrame("Reset Successful");
+        JButton ok = new JButton("OK");
+        JLabel success = new JLabel("Your profile has been reset. All associated Data has been erased.");
+
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        save.setLayout(new GridBagLayout());
+
+        try {
+            save.setIconImage(ImageIO.read(new File("logo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        GridBagConstraints sc = new GridBagConstraints();
+        sc.fill = GridBagConstraints.HORIZONTAL;
+        sc.insets = new Insets(10, 2, 10, 2); //TOP, LEFT, BOTTOM, RIGHT
+
+        sc.gridx = 0;
+        sc.gridy = 0;
+        save.add(success, sc);
+        sc.gridx = 0;
+        sc.gridy = 1;
+        save.add(ok, sc);
+
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save.setVisible(false);
+                new MyProfile();
+            }
+        });
+
+        save.pack();
+        save.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        save.setVisible(true);
     }
 
 }

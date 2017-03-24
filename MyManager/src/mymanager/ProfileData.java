@@ -16,7 +16,18 @@ public class ProfileData implements Serializable{
     private Height height;
     private String firstName, lastName, gender;
     
-    
+    public ProfileData(){
+        weight = 0;
+        age = 0;
+        startBalance = 0;
+        startSavings = 0;
+        savingsGoal = 0;
+        height = new Height();
+        firstName = "";
+        lastName = "";
+        gender = "";
+        
+    }
     
     public ProfileData(Height newHeight, int newWeight, int newAge, String newFirstName, String newLastName, String newGender, double newStartBalance, double newStartSavings, double newSaveGoal){
         setWeight(newWeight);

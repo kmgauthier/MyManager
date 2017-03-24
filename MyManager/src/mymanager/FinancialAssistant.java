@@ -63,8 +63,13 @@ public class FinancialAssistant extends JFrame {
         if (storedData != null) {
             FinancialData finData = FinancialData.read();
             if (finData != null) {
-                totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
-                totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
+                if(finData.getCurrentSavingsBalance() == 0 && finData.getResetStatus()){
+                    totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
+                    totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
+                } else {
+                    totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
+                    totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
+                }
             } else {
                 totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                 totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
