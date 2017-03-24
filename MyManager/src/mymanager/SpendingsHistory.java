@@ -83,12 +83,18 @@ public class SpendingsHistory extends JFrame {
             gc.gridx = 0;
             gc.gridy = y;
             frame.add(backButton, gc);
+            gc.gridx = 1;
+            gc.gridy = y;
+            frame.add(resetSpending, gc);
         } else {
 
             //back button
             gc.gridx = 0;
             gc.gridy = 3;
             frame.add(backButton, gc);
+            gc.gridx = 1;
+            gc.gridy = 3;
+            frame.add(resetSpending, gc);
         }
         backButton.addActionListener(new ActionListener() { //go to home page
             @Override
@@ -99,28 +105,11 @@ public class SpendingsHistory extends JFrame {
 
         });
         
-        gc.gridx = 1;
-        gc.gridy = 3;
-        frame.add(resetSpending, gc);
+
         resetSpending.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                frame.removeAll();
-                gc.gridx = 0;
-                gc.gridy = 0;
-                frame.add(date, gc);
-                gc.gridx = 1;
-                gc.gridy = 0;
-                frame.add(description, gc);
-                gc.gridx = 2;
-                gc.gridy = 0;
-                frame.add(cost, gc);
-                gc.gridx = 0;
-                gc.gridy = 3;
-                frame.add(backButton, gc);
-                gc.gridx = 1;
-                gc.gridy = 3;
-                frame.add(resetSpending, gc);
+                SpendingData.write(new ArrayList<SpendingData>());
                 resetPrompt();
                 
             }

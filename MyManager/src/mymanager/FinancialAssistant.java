@@ -22,7 +22,7 @@ public class FinancialAssistant extends JFrame {
     private JButton backButton, addSavings, addIncome, addSpendings, spendHistory;
     private JLabel goalSavings, totalSavings, totalAccount; //weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
-    private ArrayList<SpendingData> spendingHistory =  new ArrayList<SpendingData>();
+    private ArrayList<SpendingData> spendingHistory = new ArrayList<SpendingData>();
 
     public FinancialAssistant() {
 
@@ -182,15 +182,15 @@ public class FinancialAssistant extends JFrame {
         addSpendings.addActionListener(new ActionListener() { //go to SpendingsHistory page
             @Override
             public void actionPerformed(ActionEvent e) {
-               
-             if (inSpent.getText().equals("Cost") || Double.parseDouble(inSpent.getText()) < 0) {
+
+                if (inSpent.getText().equals("Cost") || Double.parseDouble(inSpent.getText()) < 0) {
                     frame.setVisible(false);
                     errorPrompt();
                 } else {
-                  double amount = Double.parseDouble(inSpent.getText());
-                SpendingData sd = new SpendingData(inDate.getText(), inDescript.getText(), amount);
-               // sd.addSpending(sd);
-               spendingHistory.add(sd); // loop thru for each 
+                    double amount = Double.parseDouble(inSpent.getText());
+                    SpendingData sd = new SpendingData(inDate.getText(), inDescript.getText(), amount);
+                    sd.addSpending(sd);
+                    //spendingHistory.add(sd); // loop thru for each 
                     FinancialData data = FinancialData.read();
                     if (data != null) {
                         data.removeIncome(amount);
@@ -206,8 +206,6 @@ public class FinancialAssistant extends JFrame {
                 }
             }
         });
-
-            
 
         gc.gridx = 0;
         gc.gridy = 6;
@@ -245,7 +243,7 @@ public class FinancialAssistant extends JFrame {
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());
-                
+
         try {
             save.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
@@ -284,7 +282,7 @@ public class FinancialAssistant extends JFrame {
 
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLayout(new GridBagLayout());
-                
+
         try {
             save.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
@@ -315,7 +313,7 @@ public class FinancialAssistant extends JFrame {
         frame.setVisible(false);
         save.setVisible(true);
     }
-    
+
     private void errorPrompt() {
         JFrame save = new JFrame("There was an error");
         JButton ok = new JButton("OK");
