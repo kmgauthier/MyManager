@@ -37,7 +37,7 @@ public class SpendingsHistory extends JFrame {
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
         try {
-            frame.setIconImage(ImageIO.read(new File("logo.png")));
+            frame.setIconImage(ImageIO.read(new File("newLogo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -131,7 +131,7 @@ public class SpendingsHistory extends JFrame {
         save.setLayout(new GridBagLayout());
 
         try {
-            save.setIconImage(ImageIO.read(new File("logo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }

@@ -284,7 +284,7 @@ public class MyProfile {
         save.setLayout(new GridBagLayout());
 
         try {
-            save.setIconImage(ImageIO.read(new File("logo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
