@@ -222,7 +222,7 @@ public class MyProfile {
     }
 
     private void saveData() {
-
+        try{
         Height saveHeight = new Height(Integer.parseInt(heightFeet.getText()), Integer.parseInt(heightInches.getText()));//declares new object of class Height and gives it parameters that the user inputted
         int saveWeight = Integer.parseInt(weight.getText());//saves user's weight
         int saveAge = Integer.parseInt(age.getText());//saves user's age
@@ -235,7 +235,11 @@ public class MyProfile {
         storedData = new ProfileData(saveHeight, saveWeight, saveAge, firstName.getText(), lastName.getText(), userGender, startBalance, startSavings, savingsGoal);//adds these variables to storedData
 
         ProfileData.write(storedData);
-
+        } catch(Exception e){
+            errorPrompt();
+            return;
+        }
+        
         JFrame save = new JFrame("Save Successful");//new jframe for "Save Successful" screen
         JButton ok = new JButton("OK");//creating ok button
         JLabel success = new JLabel("Your settings have been saved successfully!");//declaring success label
@@ -305,6 +309,46 @@ public class MyProfile {
             public void actionPerformed(ActionEvent e) {
                 save.setVisible(false);
                 new MyProfile();
+            }
+        });
+
+        save.pack();
+        save.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        save.setVisible(true);
+    }
+    
+    
+    private void errorPrompt() {
+        JFrame save = new JFrame("There was an error");
+        JButton ok = new JButton("OK");
+        JLabel success = new JLabel("The data for one of the inputs is an invalid format. Please try again.");
+
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        save.setLayout(new GridBagLayout());
+
+        try {
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        GridBagConstraints sc = new GridBagConstraints();
+        sc.fill = GridBagConstraints.HORIZONTAL;
+        sc.insets = new Insets(10, 2, 10, 2); //TOP, LEFT, BOTTOM, RIGHT
+
+        sc.gridx = 0;
+        sc.gridy = 0;
+        save.add(success, sc);
+        sc.gridx = 0;
+        sc.gridy = 1;
+        save.add(ok, sc);
+
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save.setVisible(false);
+                frame.setVisible(true);
             }
         });
 

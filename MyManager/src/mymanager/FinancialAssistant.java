@@ -63,9 +63,12 @@ public class FinancialAssistant extends JFrame {
         if (storedData != null) {
             FinancialData finData = FinancialData.read();
             if (finData != null) {
-                if(finData.getCurrentSavingsBalance() == 0 && finData.getResetStatus()){
+                if(finData.getCurrentSavingsBalance() == 0 || finData.getResetStatus()){
                     totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                     totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
+                    finData.addSavings(storedData.getStartSavings());
+                    finData.addIncome(storedData.getStartBalance());
+                    FinancialData.write(finData);
                 } else {
                     totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
                     totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
@@ -250,7 +253,7 @@ public class FinancialAssistant extends JFrame {
         save.setLayout(new GridBagLayout());
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -289,7 +292,7 @@ public class FinancialAssistant extends JFrame {
         save.setLayout(new GridBagLayout());
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -328,7 +331,7 @@ public class FinancialAssistant extends JFrame {
         save.setLayout(new GridBagLayout());
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("logo.png")));
         } catch (IOException exc) {
             exc.printStackTrace();
         }
