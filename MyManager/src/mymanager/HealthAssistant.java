@@ -41,7 +41,7 @@ public class HealthAssistant extends JFrame {
             exc.printStackTrace();
         }
 
-        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        frame.getContentPane().setBackground(new Color(122, 94, 213));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
@@ -85,10 +85,9 @@ public class HealthAssistant extends JFrame {
         calsToday.setFont(font3);
         netCals.setFont(font3);
         calsBurned.setFont(font3);
-        addCalsBurn.setBackground(new Color(102, 213, 247));
-        addCalsConsumed.setBackground(new Color(102, 213, 247));
-        resetCals.setBackground(new Color(255, 0, 0)); resetCals.setFont(font1);
-        resetCals.setForeground(new Color(0, 0, 0));
+        addCalsBurn.setBackground(new Color(163, 146, 219));
+        addCalsConsumed.setBackground(new Color(163, 146, 219));
+        resetCals.setBackground(new Color(253, 42, 42)); resetCals.setFont(font1);
         inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
         inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
 

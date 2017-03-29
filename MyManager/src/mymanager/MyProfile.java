@@ -40,7 +40,7 @@ public class MyProfile {
             exc.printStackTrace();
         }
 
-        frame.getContentPane().setBackground(new Color(73, 172, 229));//setting background of profile page
+        frame.getContentPane().setBackground(new Color(122, 94, 213));//setting background of profile page
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);//creating font for labels
 
         weight = new JTextField("", 4);//declaring weight textfield
@@ -87,9 +87,8 @@ public class MyProfile {
 
         saveButton.setFont(font1);//setting save button font as font 1
         backButton.setFont(font1);//setting back button font as font 1
-        saveButton.setBackground(new Color(102, 213, 247));//setting background color of save button
-        resetButton.setBackground(new Color(255, 0, 0)); //Set color to red
-        resetButton.setForeground(new Color(0, 0, 0));
+        saveButton.setBackground(new Color(163, 146, 219));//setting background color of save button
+        resetButton.setBackground(new Color(253, 42, 42)); //Set color to red
 
         storedData = ProfileData.read();//saving data from Profile Data into storedData
         if (storedData != null) {//to automatically display the user's saved data in the textfields

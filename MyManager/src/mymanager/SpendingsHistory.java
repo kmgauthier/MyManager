@@ -32,7 +32,7 @@ public class SpendingsHistory extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
         
-        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        frame.getContentPane().setBackground(new Color(122, 94, 213));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
@@ -47,8 +47,7 @@ public class SpendingsHistory extends JFrame {
         cost = new JLabel("Cost");
         backButton = new JButton("Back"); backButton.setFont(font1);
         resetSpending = new JButton("Reset Spending History");
-        resetSpending.setFont(font1); resetSpending.setBackground(new Color(255, 0, 0));
-        resetSpending.setForeground(new Color(0,0,0));
+        resetSpending.setFont(font1); resetSpending.setBackground(new Color(253, 42, 42));
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;

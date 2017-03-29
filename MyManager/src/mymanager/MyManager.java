@@ -42,19 +42,19 @@ public class MyManager extends JFrame {
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);//creating font for labels at bottom of screen
 
         //frame.getContentPane().setBackground(new Color(102, 213, 247));
-        frame.getContentPane().setBackground(new Color(73, 172, 229));//setting background color of home page
+        frame.getContentPane().setBackground(new Color(122, 94, 213));//setting background color of home page
 
         financialAssistant = new JButton("Financial Assistant");//declaring financial assistant button
         healthAssistant = new JButton("Health Assistant");//declaring health assistant button
 
         //financialAssistant.setBackground(new Color(99,158, 192));
-        financialAssistant.setBackground(new Color(102, 213, 247));//setting background color of financial assistant button
-        healthAssistant.setBackground(new Color(102, 213, 247));//setting background color of health assistant button
+        financialAssistant.setBackground(new Color(163, 146, 219));//setting background color of financial assistant button
+        healthAssistant.setBackground(new Color(163, 146, 219));//setting background color of health assistant button
         financialAssistant.setFont(font1);//setting font of financial assistant button to font 1
         healthAssistant.setFont(font1);//setting font of health assistant button to font 1
 
         myProfile = new JButton("My Profile");//declaring my profile button
-        myProfile.setBackground(new Color(102, 213, 247));//setting background color of myprofile button
+        myProfile.setBackground(new Color(163, 146, 219));//setting background color of myprofile button
         myProfile.setFont(font1);//setting font of my profile button to font 1
         welcome = new JLabel("Welcome to My Manager!");//creating welcome header label
         welcome.setFont(font2);//setting font of header label to font 2
