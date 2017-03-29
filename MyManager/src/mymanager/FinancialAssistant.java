@@ -36,7 +36,7 @@ public class FinancialAssistant extends JFrame {
             exc.printStackTrace();
         }
 
-        frame.getContentPane().setBackground(new Color(73, 172, 229));
+        frame.getContentPane().setBackground(new Color(122, 94, 213));
         Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
@@ -49,13 +49,13 @@ public class FinancialAssistant extends JFrame {
 
         backButton.setFont(font1);
         addSavings.setFont(font1);
-        addSavings.setBackground(new Color(102, 213, 247));
+        addSavings.setBackground(new Color(163, 146, 219));
         addIncome.setFont(font1);
-        addIncome.setBackground(new Color(102, 213, 247));
+        addIncome.setBackground(new Color(163, 146, 219));
         addSpendings.setFont(font1);
-        addSpendings.setBackground(new Color(102, 213, 247));
+        addSpendings.setBackground(new Color(163, 146, 219));
         spendHistory.setFont(font1);
-        spendHistory.setBackground(new Color(102, 213, 247));
+        spendHistory.setBackground(new Color(163, 146, 219));
         //weeklySpendings.setFont(font3);
 
         //total savings and goal savings and account total
