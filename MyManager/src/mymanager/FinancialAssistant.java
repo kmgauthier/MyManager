@@ -66,7 +66,7 @@ public class FinancialAssistant extends JFrame {
                 if(finData.getCurrentSavingsBalance() == 0 || finData.getResetStatus()){
                     totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                     totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
-                    percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
+                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ ((finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00) + "%");
                     finData.addSavings(storedData.getStartSavings());
                     finData.addIncome(storedData.getStartBalance());
                     FinancialData.write(finData);
