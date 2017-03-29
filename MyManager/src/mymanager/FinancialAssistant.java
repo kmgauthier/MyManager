@@ -73,19 +73,19 @@ public class FinancialAssistant extends JFrame {
                 } else {
                     totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
                     totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
-                    percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
+                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal()) + "%");
                 }
             } else {
                 totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                 totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
-                percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
+                percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100 + "%");
             }
             goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal());
-            percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
+            percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100 + "%");
         } else {
             totalSavings = new JLabel("Savings Balance: $0");
             goalSavings = new JLabel("Goal Savings: No Goal Set");
-            percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
+            percentToGoal = new JLabel(" Percentage Towards Goal: 0%");
         }
 
         totalSavings.setFont(font3);
