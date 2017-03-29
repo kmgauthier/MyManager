@@ -89,6 +89,7 @@ public class MyProfile {
         backButton.setFont(font1);//setting back button font as font 1
         saveButton.setBackground(new Color(163, 146, 219));//setting background color of save button
         resetButton.setBackground(new Color(253, 42, 42)); //Set color to red
+        resetButton.setFont(font1);
 
         storedData = ProfileData.read();//saving data from Profile Data into storedData
         if (storedData != null) {//to automatically display the user's saved data in the textfields
