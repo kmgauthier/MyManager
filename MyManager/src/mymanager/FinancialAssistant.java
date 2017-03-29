@@ -20,7 +20,7 @@ public class FinancialAssistant extends JFrame {
 
     private JFrame frame;
     private JButton backButton, addSavings, addIncome, addSpendings, spendHistory;
-    private JLabel goalSavings, totalSavings, totalAccount; //weeklySpendings;
+    private JLabel goalSavings, totalSavings, totalAccount, percentToGoal; //weeklySpendings;
     private JTextField inSavings, inIncome, inSpent, inDate, inDescript; //inputs for what was saved, spent, or income
     private ArrayList<SpendingData> spendingHistory = new ArrayList<SpendingData>();
 
@@ -66,26 +66,32 @@ public class FinancialAssistant extends JFrame {
                 if(finData.getCurrentSavingsBalance() == 0 || finData.getResetStatus()){
                     totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                     totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
+                    percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
                     finData.addSavings(storedData.getStartSavings());
                     finData.addIncome(storedData.getStartBalance());
                     FinancialData.write(finData);
                 } else {
                     totalSavings = new JLabel("Savings Balance: $" + finData.getCurrentSavingsBalance());
                     totalAccount = new JLabel("Account Balance: $" + finData.getCurrentAccountBalance());
+                    percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
                 }
             } else {
                 totalSavings = new JLabel("Savings Balance: $" + storedData.getStartSavings());
                 totalAccount = new JLabel("Account Balance: $" + storedData.getStartBalance());
+                percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
             }
             goalSavings = new JLabel("Goal Savings: $" + storedData.getSavingsGoal());
+            percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
         } else {
             totalSavings = new JLabel("Savings Balance: $0");
             goalSavings = new JLabel("Goal Savings: No Goal Set");
+            percentToGoal = new JLabel(" Percentage towards Goal: "+ (storedData.getStartBalance()/ storedData.getSavingsGoal()) + "%");
         }
 
         totalSavings.setFont(font3);
         totalAccount.setFont(font3);
         goalSavings.setFont(font3);
+        percentToGoal.setFont(font3);
 
         //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
         inDate = new JTextField("MM/DD/YY", 15);
@@ -107,7 +113,13 @@ public class FinancialAssistant extends JFrame {
         frame.add(goalSavings, gc);
         gc.gridx = 2;
         gc.gridy = 0;
-        frame.add(totalAccount, gc); //total money in account, not savings
+        frame.add(totalAccount, gc);
+        gc.gridx = 3;
+        gc.gridy = 0;
+        
+        frame.add(percentToGoal,gc);
+        
+//total money in account, not savings
         //gc.gridx = 3;
         //gc.gridy = 0;
         //frame.add(weeklySpendings, gc);
