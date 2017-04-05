@@ -63,6 +63,9 @@ public class FinancialAssistant extends JFrame {
 
         DecimalFormat moneyFormat = new DecimalFormat("#,###,###,##0.00");
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        
+       //(finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00)
+        
         //total savings and goal savings and account total
         ProfileData storedData = ProfileData.read();
         if (storedData != null) {
@@ -71,21 +74,29 @@ public class FinancialAssistant extends JFrame {
                 if(finData.getCurrentSavingsBalance() == 0 || finData.getResetStatus()){
                     totalSavings = new JLabel("Savings Balance: $" + moneyFormat.format(storedData.getStartSavings()));
                     totalAccount = new JLabel("Account Balance: $" + moneyFormat.format(storedData.getStartBalance()));
-                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ ((finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00) + "%");
+                    double roundedPercent = (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00;
+                    DecimalFormat format = new DecimalFormat("#.00");
+                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ format.format(roundedPercent) + "%");
                     finData.addSavings(storedData.getStartSavings());
                     finData.addIncome(storedData.getStartBalance());
                     FinancialData.write(finData);
                 } else {
                     totalSavings = new JLabel("Savings Balance: $" + moneyFormat.format(finData.getCurrentSavingsBalance()));
                     totalAccount = new JLabel("Account Balance: $" + moneyFormat.format(finData.getCurrentAccountBalance()));
-                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal()) + "%");
+                    double roundedPercent = (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00;
+                    DecimalFormat format = new DecimalFormat("#.00");
+                    percentToGoal = new JLabel(" Percentage Towards Goal: "+ format.format(roundedPercent) + "%");
                 }
             } else {
+                double roundedPercent = (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00;
+                DecimalFormat format = new DecimalFormat("#.00");
                 totalSavings = new JLabel("Savings Balance: $" + moneyFormat.format(storedData.getStartBalance()));
-                percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100 + "%");
+                percentToGoal = new JLabel(" Percentage Towards Goal: "+ format.format(roundedPercent) + "%");
             }
+            double roundedPercent = (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00;
+            DecimalFormat format = new DecimalFormat("#.00");
             goalSavings = new JLabel("Goal Savings: $" + moneyFormat.format(storedData.getSavingsGoal()));
-            percentToGoal = new JLabel(" Percentage Towards Goal: "+ (finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100 + "%");
+            percentToGoal = new JLabel(" Percentage Towards Goal: "+ format.format(roundedPercent) + "%");
         } else {
             totalSavings = new JLabel("Savings Balance: $0");
             goalSavings = new JLabel("Goal Savings: No Goal Set");
