@@ -17,10 +17,10 @@ import java.io.*;
  */
 public class SpendingData implements Serializable {
     
-    private String date, description;
-    private double cost;
-    private ArrayList<SpendingData> data = new ArrayList<SpendingData>();
-    public SpendingData(String newDate, String newDescription, double newCost){
+    private String date, description;//creating string variables for date and description
+    private double cost;//creates double variable for cost
+    private ArrayList<SpendingData> data = new ArrayList<SpendingData>();//creates array for spending data
+    public SpendingData(String newDate, String newDescription, double newCost){//declaring array for spending data
         date = newDate;
         description = newDescription;
         cost = newCost;
@@ -32,7 +32,7 @@ public class SpendingData implements Serializable {
         cost = 0.0;
     }
     
-    public void addSpending(SpendingData spendData){
+    public void addSpending(SpendingData spendData){//method to add spending data
         if(fileExists()){
             data = read();
             data.add(spendData);
@@ -46,19 +46,19 @@ public class SpendingData implements Serializable {
     }
     
     
-    public String getDate(){
+    public String getDate(){//method to get date value
         return date;
     }
     
-    public String getDesc(){
+    public String getDesc(){//method to get description
         return description;
     }
     
-    public double getCost(){
+    public double getCost(){//method to get cost
         return cost;
     }
     
-    public static void write(ArrayList<SpendingData> listWrite){
+    public static void write(ArrayList<SpendingData> listWrite){//method to write to array
         
         try {
             FileOutputStream fileOutSpending = new FileOutputStream("spending.txt");
@@ -72,7 +72,7 @@ public class SpendingData implements Serializable {
         
     }
     
-    public static ArrayList<SpendingData> read(){
+    public static ArrayList<SpendingData> read(){//method to read from array
         ArrayList<SpendingData> alsd = new ArrayList<SpendingData>();
         try {
             File file = new File("spending.txt");
@@ -95,7 +95,7 @@ public class SpendingData implements Serializable {
         return alsd;
     }
 
-    public boolean fileExists(){
+    public boolean fileExists(){//method to check if file exists
         File file = new File("spending.txt");
         if (file.canRead()) {
             return true;

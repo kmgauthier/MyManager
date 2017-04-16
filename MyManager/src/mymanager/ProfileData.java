@@ -11,10 +11,10 @@ import java.io.*;
  */
 public class ProfileData implements Serializable{
     
-    private int weight, age;
-    private double startBalance, startSavings, savingsGoal;
-    private Height height;
-    private String firstName, lastName, gender;
+    private int weight, age;//creating integers for weight and age
+    private double startBalance, startSavings, savingsGoal;//creates double variables for starting balance, starting savings, and savings goal
+    private Height height;//creates variable of height class
+    private String firstName, lastName, gender;//creates strings for first and last name and gender
     
     public ProfileData(){
         weight = 0;
@@ -40,11 +40,11 @@ public class ProfileData implements Serializable{
         setGender(newGender);
     }
     
-    public void setHeight(Height newHeight){
+    public void setHeight(Height newHeight){//method to set the height
         height = newHeight;
     }
     
-    public void setWeight(int newWeight){
+    public void setWeight(int newWeight){//method to set the weight
         if(newWeight > 0){
             weight = newWeight;
         } else {
@@ -56,7 +56,7 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public void setAge(int newAge){
+    public void setAge(int newAge){//method to set the age
         if(newAge > 0){
             age = newAge;
         } else {
@@ -64,12 +64,12 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public void setName(String newFirstName, String newLastName){
+    public void setName(String newFirstName, String newLastName){//method to set the name
         firstName = newFirstName;
         lastName = newLastName;
     }
     
-    public void setStartBalance(double newStartBalance){
+    public void setStartBalance(double newStartBalance){//method to set starting balance
         if(newStartBalance >= 0){
             startBalance = newStartBalance;
         }
@@ -78,7 +78,7 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public void setStartSavings(double newStartSavings ){
+    public void setStartSavings(double newStartSavings ){//method to set the starting savings
         if( newStartSavings >=0 ){
             startSavings = newStartSavings;
         }
@@ -87,7 +87,7 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public void setSavingsGoal(double newSaveGoal){
+    public void setSavingsGoal(double newSaveGoal){//method to set the savings goal
         if( newSaveGoal >0 ){
             savingsGoal = newSaveGoal;
         }
@@ -96,7 +96,7 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public void setGender(String newGender){
+    public void setGender(String newGender){//method to set gender
         if(newGender.equals("Male") || newGender.equals("Female")){
             gender = newGender;
         } else {
@@ -108,49 +108,49 @@ public class ProfileData implements Serializable{
         }
     }
     
-    public int getWeight(){
+    public int getWeight(){//method to get weight
         return weight;
     }
     
-    public Height getHeight(){
+    public Height getHeight(){//method to get height
         return height;
     }
     
-    public int getAge(){
+    public int getAge(){//method to get age
         return age;
     }
     
-    public String getFirstName(){
+    public String getFirstName(){//method to get first name
         return firstName;
     }
     
-    public String getLastName(){
+    public String getLastName(){//method to get last name
         return lastName;
     }
     
-    public double getStartSavings(){
+    public double getStartSavings(){//method to get starting savings
         return startSavings;
     }
     
-    public double getStartBalance(){
+    public double getStartBalance(){//method to get starting balance
         return startBalance;
     }
 
-    public double getSavingsGoal(){
+    public double getSavingsGoal(){//method to get savings goal
         return savingsGoal;
     }
     
-    public String getGender(){
+    public String getGender(){//method to get gender
         return gender;
     }
     
     @Override
-    public String toString(){
+    public String toString(){//method to make the variables into a string
         return "Name: "+firstName+" "+lastName+", Age: "+age+", Height: "+height+", Weight: "+weight + 
                 ", Starting Balance: $" + startBalance + ", Starting SAvings: $" + startSavings + ", Goal Savings: $" + savingsGoal;
     }
     
-    public static void write(ProfileData data){
+    public static void write(ProfileData data){//method to write data to text file
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -168,7 +168,7 @@ public class ProfileData implements Serializable{
         
     }
 
-    public static ProfileData read(){
+    public static ProfileData read(){//method to read profile data
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         ProfileData data = null;

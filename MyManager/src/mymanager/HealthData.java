@@ -9,8 +9,8 @@ public class HealthData implements Serializable {
     private static final long serialVersionUID = -7346543021312279802L;
 
     
-    private int calsBurned, calsConsumed;
-    private int netCals;
+    private int calsBurned, calsConsumed;//creates integer for calories burned and calories consumed
+    private int netCals;//creates integer for net calories
     
     public HealthData(int newCalsBurned, int newCalsConsumed){
         addCalsBurned(newCalsBurned);
@@ -31,7 +31,7 @@ public class HealthData implements Serializable {
         return hd;
     }
     
-    public void addCalsBurned(int newCalsBurned){
+    public void addCalsBurned(int newCalsBurned){//creates addCalsBurned method
         if(newCalsBurned >= 0){
             calsBurned += newCalsBurned;
             netCals -= newCalsBurned;
@@ -49,25 +49,25 @@ public class HealthData implements Serializable {
         }
     }
     
-    public int getCalsBurned(){
+    public int getCalsBurned(){//get method for calories burned
         return calsBurned;
     }
     
-    public int getCalsConsumed(){
+    public int getCalsConsumed(){//get method for calories consumed
         return calsConsumed;
     }
     
-    public void calcNetCals(){
+    public void calcNetCals(){//method to calculate net calories
         
         netCals = calsConsumed - calsBurned;
         
     }
     
-    public int getNetCals(){
+    public int getNetCals(){//method to get net calories
         return netCals;
     }
     
-    public static void write(HealthData data){
+    public static void write(HealthData data){//method to write health data to text file
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -85,7 +85,7 @@ public class HealthData implements Serializable {
         
     }
 
-    public static HealthData read(){
+    public static HealthData read(){//method to read health data
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         HealthData data = null;

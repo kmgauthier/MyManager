@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class Height implements Serializable {
     
-    private int feet = 0, inches = 0;
+    private int feet = 0, inches = 0;//creating integers for feet and inches
     
     public Height(int ft, int in){
         if(ft > 0 && in >= 0){
@@ -29,15 +29,15 @@ public class Height implements Serializable {
         inches = 0;
     }
     
-    public int getFoot(){
+    public int getFoot(){//method to get feet
         return feet;
     }
     
-    public int getInches(){
+    public int getInches(){//method to get inches
         return inches;
     }
     
-    public void setFoot(int ft){
+    public void setFoot(int ft){//method to set feet
         if(ft > 0){
             feet = ft;
         } else {
@@ -45,7 +45,7 @@ public class Height implements Serializable {
         }
     }
     
-    public void setInches(int in){
+    public void setInches(int in){//method to set inches
         if(in >0){
             inches = in;
         } else {
@@ -54,7 +54,7 @@ public class Height implements Serializable {
     }
     
     @Override
-    public String toString(){
+    public String toString(){//method to make feet and inches into a string
         return feet+" foot "+inches+" inches";
     }
     

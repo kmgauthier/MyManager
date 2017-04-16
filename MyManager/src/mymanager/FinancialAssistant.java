@@ -29,45 +29,45 @@ public class FinancialAssistant extends JFrame {
 
     public FinancialAssistant() {
 
-        frame = new JFrame("Financial Assistant");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridBagLayout());
+        frame = new JFrame("Financial Assistant");//creates jframe for financial assistant
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
+        frame.setLayout(new GridBagLayout());//sets layout of frame to gridbaglayout
 
         try {
-            frame.setIconImage(ImageIO.read(new File("newLogo.png")));
+            frame.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon to mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
 
-        frame.getContentPane().setBackground(new Color(122, 94, 213));
-        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        frame.getContentPane().setBackground(new Color(122, 94, 213));//sets background color of frame
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);//creating fonts
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
-        backButton = new JButton("Back");
-        addSavings = new JButton("Add Savings");
-        addIncome = new JButton("Add Income");
-        addSpendings = new JButton("Add Spendings");
-        spendHistory = new JButton("Spending History");
+        backButton = new JButton("Back");//creates back button
+        addSavings = new JButton("Add Savings");//creates add savings button
+        addIncome = new JButton("Add Income");//creates add income button
+        addSpendings = new JButton("Add Spendings");//creates add spending button
+        spendHistory = new JButton("Spending History");//creates spending history button
         //weeklySpendings = new JLabel("Spent This Week: $"); //should look like "Spent This Week: $" + weekSpent
 
-        backButton.setFont(font1);
-        addSavings.setFont(font1);
-        addSavings.setBackground(new Color(163, 146, 219));
-        addIncome.setFont(font1);
-        addIncome.setBackground(new Color(163, 146, 219));
-        addSpendings.setFont(font1);
-        addSpendings.setBackground(new Color(163, 146, 219));
-        spendHistory.setFont(font1);
-        spendHistory.setBackground(new Color(163, 146, 219));
+        backButton.setFont(font1);//setting font of back button to font 1
+        addSavings.setFont(font1);//setting font of add savings button to font 1
+        addSavings.setBackground(new Color(163, 146, 219));//setting background color of add savings button
+        addIncome.setFont(font1);//setting font of add income button to font 1
+        addIncome.setBackground(new Color(163, 146, 219));//setting background color of add income button
+        addSpendings.setFont(font1);//setting font of add spendings button to font 1
+        addSpendings.setBackground(new Color(163, 146, 219));//setting background color of add spendings button
+        spendHistory.setFont(font1);//setting font of spending history button to font 1
+        spendHistory.setBackground(new Color(163, 146, 219));//setting background color of spending history button
         //weeklySpendings.setFont(font3);
 
-        DecimalFormat moneyFormat = new DecimalFormat("#,###,###,##0.00");
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        DecimalFormat moneyFormat = new DecimalFormat("#,###,###,##0.00");//setting decimal format
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);//setting currency format
         
        //(finData.getCurrentSavingsBalance()/ storedData.getSavingsGoal())*100.00)
         
         //total savings and goal savings and account total
-        ProfileData storedData = ProfileData.read();
+        ProfileData storedData = ProfileData.read();//reading profile data
         if (storedData != null) {
             FinancialData finData = FinancialData.read();
             if (finData != null) {
@@ -103,17 +103,17 @@ public class FinancialAssistant extends JFrame {
             percentToGoal = new JLabel(" Percentage Towards Goal: 0%");
         }
 
-        totalSavings.setFont(font3);
-        totalAccount.setFont(font3);
-        goalSavings.setFont(font3);
-        percentToGoal.setFont(font3);
+        totalSavings.setFont(font3);//sets font for total Savings label to font 3
+        totalAccount.setFont(font3);//sets font of total account balance label to font 3
+        goalSavings.setFont(font3);//sets font of goal savings label to font 3
+        percentToGoal.setFont(font3);//sets font for percenttogoal label to font 3
 
         //totalAccount = new JLabel("Account Total: $");//should look like "Account Balance: $" + balanceAccount (for how much money is in general account, not savings)
-        inDate = new JTextField("MM/DD/YY", 15);
-        inDescript = new JTextField("Description", 15);
-        inSpent = new JTextField("Cost", 15);
-        inSavings = new JTextField("Savings", 15);
-        inIncome = new JTextField("Income", 15);
+        inDate = new JTextField("MM/DD/YY", 15);//creates date textfield
+        inDescript = new JTextField("Description", 15);//creates Description textfield
+        inSpent = new JTextField("Cost", 15);//creates amount spent textfield
+        inSavings = new JTextField("Savings", 15);//creates Savings textfield
+        inIncome = new JTextField("Income", 15);//creates income textfield
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -122,17 +122,17 @@ public class FinancialAssistant extends JFrame {
         //display weekly spendings and total savings and goal savings and total account balance
         gc.gridx = 0;
         gc.gridy = 0;
-        frame.add(totalSavings, gc);
+        frame.add(totalSavings, gc);//adding totalSavings label to frame
         gc.gridx = 1;
         gc.gridy = 0;
-        frame.add(goalSavings, gc);
+        frame.add(goalSavings, gc);//adding goal savings label to frame
         gc.gridx = 2;
         gc.gridy = 0;
-        frame.add(totalAccount, gc);
+        frame.add(totalAccount, gc);//adding account balance label to frame
         gc.gridx = 3;
         gc.gridy = 0;
         
-        frame.add(percentToGoal,gc);
+        frame.add(percentToGoal,gc);//adding percentToGoal label to frame
         
 //total money in account, not savings
         //gc.gridx = 3;
@@ -142,10 +142,10 @@ public class FinancialAssistant extends JFrame {
         //adding amount to savings
         gc.gridx = 0;
         gc.gridy = 1;
-        frame.add(inSavings, gc);
+        frame.add(inSavings, gc);//adding Savings textfield to frame
         gc.gridx = 1;
         gc.gridy = 1;
-        frame.add(addSavings, gc);
+        frame.add(addSavings, gc);//adding add Savings button to frame
         addSavings.addActionListener(new ActionListener() { //go to home page
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -173,11 +173,11 @@ public class FinancialAssistant extends JFrame {
         //adding amount to income/acccount
         gc.gridx = 0;
         gc.gridy = 2;
-        frame.add(inIncome, gc);
+        frame.add(inIncome, gc);//adding Income textfield to frame
         gc.gridx = 1;
         gc.gridy = 2;
-        frame.add(addIncome, gc);
-        addIncome.addActionListener(new ActionListener() {
+        frame.add(addIncome, gc);//adding addIncome button to frame
+        addIncome.addActionListener(new ActionListener() {//action listener method for addIncome button
             @Override
             public void actionPerformed(ActionEvent E) {
                 if (inIncome.getText().equals("Income") || Double.parseDouble(inIncome.getText()) < 0) {
@@ -204,16 +204,16 @@ public class FinancialAssistant extends JFrame {
         //adding amount spent
         gc.gridx = 0;
         gc.gridy = 3;
-        frame.add(inDate, gc);
+        frame.add(inDate, gc);//adding Date textfield to frame
         gc.gridx = 1;
         gc.gridy = 3;
-        frame.add(inDescript, gc);
+        frame.add(inDescript, gc);//adding description textfield to frame
         gc.gridx = 2;
         gc.gridy = 3;
-        frame.add(inSpent, gc);
+        frame.add(inSpent, gc);//adding amount spent textfield to frame
         gc.gridx = 3;
         gc.gridy = 3;
-        frame.add(addSpendings, gc);
+        frame.add(addSpendings, gc);//adding addSpending button to frame
         addSpendings.addActionListener(new ActionListener() { //go to SpendingsHistory page
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -244,12 +244,12 @@ public class FinancialAssistant extends JFrame {
 
         gc.gridx = 0;
         gc.gridy = 6;
-        frame.add(backButton, gc);
+        frame.add(backButton, gc);//adding back button to frame
         backButton.addActionListener(new ActionListener() { //go to home page
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new MyManager();
+                new MyManager();//returns user to mymanager homepage
             }
 
         });
@@ -257,7 +257,7 @@ public class FinancialAssistant extends JFrame {
         //spending history button
         gc.gridx = 1;
         gc.gridy = 6;
-        frame.add(spendHistory, gc);
+        frame.add(spendHistory, gc);//adding spending history button to frame
         spendHistory.addActionListener(new ActionListener() { //go to SpendingsHistory page
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -271,16 +271,16 @@ public class FinancialAssistant extends JFrame {
         frame.setVisible(true);
     }
 
-    private void saveData() {
-        JFrame save = new JFrame("Deposit Successful");
-        JButton ok = new JButton("OK");
-        JLabel success = new JLabel("$" + inSavings.getText() + " has been added to your savings!");
+    private void saveData() {//method to save savings and income data that user enters
+        JFrame save = new JFrame("Deposit Successful");//creates new jframe titled "Deposit Successful"
+        JButton ok = new JButton("OK");//creates ok button
+        JLabel success = new JLabel("$" + inSavings.getText() + " has been added to your savings!");//creates success label
 
-        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        save.setLayout(new GridBagLayout());
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
+        save.setLayout(new GridBagLayout());//sets layout of frame to gridbaglayout
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon to mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -291,10 +291,10 @@ public class FinancialAssistant extends JFrame {
 
         sc.gridx = 0;
         sc.gridy = 0;
-        save.add(success, sc);
+        save.add(success, sc);//adding success label to frame
         sc.gridx = 0;
         sc.gridy = 1;
-        save.add(ok, sc);
+        save.add(ok, sc);//adding ok button to frame
 
         ok.addActionListener(new ActionListener() {
             @Override
@@ -310,16 +310,16 @@ public class FinancialAssistant extends JFrame {
         save.setVisible(true);
     }
 
-    private void saveDataSpend() {
-        JFrame save = new JFrame("Spending Added Successful");
-        JButton ok = new JButton("OK");
-        JLabel success = new JLabel("$" + inSpent.getText() + " has been removed from your account balance");
+    private void saveDataSpend() {//method to save spending history data
+        JFrame save = new JFrame("Spending Added Successfully");//creates new jframe titled "Spending Added Successfully"
+        JButton ok = new JButton("OK");//creates new ok button
+        JLabel success = new JLabel("$" + inSpent.getText() + " has been removed from your account balance");//creates new success label
 
-        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        save.setLayout(new GridBagLayout());
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
+        save.setLayout(new GridBagLayout());//sets layout of frame to gridbaglayout
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon of frame as mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -330,16 +330,16 @@ public class FinancialAssistant extends JFrame {
 
         sc.gridx = 0;
         sc.gridy = 0;
-        save.add(success, sc);
+        save.add(success, sc);//adding success label to frame
         sc.gridx = 0;
         sc.gridy = 1;
-        save.add(ok, sc);
+        save.add(ok, sc);//adding ok button to frame
 
-        ok.addActionListener(new ActionListener() {
+        ok.addActionListener(new ActionListener() {//action listener method for ok button
             @Override
             public void actionPerformed(ActionEvent e) {
                 save.setVisible(false);
-                new FinancialAssistant();
+                new FinancialAssistant();//returns user to financial assistant page
             }
         });
 
@@ -349,16 +349,16 @@ public class FinancialAssistant extends JFrame {
         save.setVisible(true);
     }
 
-    private void errorPrompt() {
-        JFrame save = new JFrame("There was an error");
-        JButton ok = new JButton("OK");
-        JLabel success = new JLabel("The amount you're adding to the account is invalid. Please try again.");
+    private void errorPrompt() {//error prompt method
+        JFrame save = new JFrame("There was an error");//creates new jframe titled "There was an Error"
+        JButton ok = new JButton("OK");//creates ok button
+        JLabel success = new JLabel("The amount you're adding to the account is invalid. Please try again.");//creates success label
 
-        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        save.setLayout(new GridBagLayout());
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
+        save.setLayout(new GridBagLayout());//sets layout of frame to gridbaglayout
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon to mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -369,16 +369,16 @@ public class FinancialAssistant extends JFrame {
 
         sc.gridx = 0;
         sc.gridy = 0;
-        save.add(success, sc);
+        save.add(success, sc);//adding success label to frame
         sc.gridx = 0;
         sc.gridy = 1;
-        save.add(ok, sc);
+        save.add(ok, sc);//adding ok button to frame
 
-        ok.addActionListener(new ActionListener() {
+        ok.addActionListener(new ActionListener() {//action listener method for ok button
             @Override
             public void actionPerformed(ActionEvent e) {
                 save.setVisible(false);
-                new FinancialAssistant();
+                new FinancialAssistant();//returns user to financial assistant page
             }
         });
 

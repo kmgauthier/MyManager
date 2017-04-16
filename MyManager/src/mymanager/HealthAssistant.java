@@ -30,19 +30,19 @@ public class HealthAssistant extends JFrame {
 
     public HealthAssistant() {
 
-        ProfileData profileData = ProfileData.read();
-        frame = new JFrame("Health Assistant");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridBagLayout());
+        ProfileData profileData = ProfileData.read(); //reading from profile data
+        frame = new JFrame("Health Assistant");//creates new jframe
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends program when user closes window
+        frame.setLayout(new GridBagLayout());//sets layout to gridbaglayout
 
         try {
-            frame.setIconImage(ImageIO.read(new File("newLogo.png")));
+            frame.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon as mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
 
-        frame.getContentPane().setBackground(new Color(122, 94, 213));
-        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);
+        frame.getContentPane().setBackground(new Color(122, 94, 213));//setting background color
+        Font font1 = new Font("Book Antiqua", Font.BOLD, 14);//creating fonts
         Font font3 = new Font("Book Antiqua", Font.BOLD, 20);
 
         //show net calories
@@ -70,24 +70,24 @@ public class HealthAssistant extends JFrame {
         }
 
         //bmi = calcBMI(profileData.getHeight(), profileData.getWeight());
-        currentWeight = new JTextField(20);
-        backButton = new JButton("Back");
-        BMICalc = new JLabel("BMI: " + calcBMI(profileData));
-        addCalsConsumed = new JButton("Add Calories");
-        addCalsBurn = new JButton("Add Calories Burned");
-        resetCals = new JButton("Reset Calorie Data");
+        //currentWeight = new JTextField(20);
+        backButton = new JButton("Back");//creates back button
+        BMICalc = new JLabel("BMI: " + calcBMI(profileData));//creates label for bmi calculator
+        addCalsConsumed = new JButton("Add Calories");//creates button for adding calories consumed
+        addCalsBurn = new JButton("Add Calories Burned");//creates button for adding calories burned
+        resetCals = new JButton("Reset Calorie Data");//creates button to reset calorie data
 
-        currentWeight.setFont(font1);
-        backButton.setFont(font1);
-        BMICalc.setFont(font3);
-        addCalsConsumed.setFont(font1);
-        addCalsBurn.setFont(font1);
-        calsToday.setFont(font3);
-        netCals.setFont(font3);
-        calsBurned.setFont(font3);
-        addCalsBurn.setBackground(new Color(163, 146, 219));
-        addCalsConsumed.setBackground(new Color(163, 146, 219));
-        resetCals.setBackground(new Color(253, 42, 42)); resetCals.setFont(font1);
+       // currentWeight.setFont(font1);
+        backButton.setFont(font1); //setting font for back button to font 1
+        BMICalc.setFont(font3);//setting font for bmi calculator label to font 3
+        addCalsConsumed.setFont(font1);//setting font for addCalsConsumed button to font 1
+        addCalsBurn.setFont(font1);//setting font for addCalsBurn button to font 1
+        calsToday.setFont(font3);//setting font for calsToday label to font 3
+        netCals.setFont(font3);//setting font for netCals label to font 3
+        calsBurned.setFont(font3);//setting font for calsBurned label to font 3
+        addCalsBurn.setBackground(new Color(163, 146, 219));//setting background color of addCalsBurn button
+        addCalsConsumed.setBackground(new Color(163, 146, 219));//setting background color of addCalsConsumed button
+        resetCals.setBackground(new Color(253, 42, 42)); resetCals.setFont(font1);//setting background color and font of resetCals button
         inAddCalsBurn = new JTextField("0", 5); //input box for calories burned
         inAddCalsConsumed = new JTextField("0", 5); //input box for calories consumed
 
@@ -102,26 +102,26 @@ public class HealthAssistant extends JFrame {
         //this block is for displaying net calories, calories consumed for today, and BMI
         gridC.gridx = 0;
         gridC.gridy = 0;
-        frame.add(calsToday, gridC);
+        frame.add(calsToday, gridC);//adding calsToday label to frame
         gridC.gridx = 2;
         gridC.gridy = 0;
-        frame.add(netCals, gridC);
+        frame.add(netCals, gridC);//adding netCalories label to frame
         gridC.gridx = 3;
         gridC.gridy = 0;
-        frame.add(BMICalc, gridC);
+        frame.add(BMICalc, gridC);//adding bmi calculator label to frame
         gridC.gridx = 1;
         gridC.gridy = 0;
-        frame.add(calsBurned, gridC);
+        frame.add(calsBurned, gridC);//adding calories burned label to frame
 
         //back button
         gridC.gridx = 0;
         gridC.gridy = 5;
-        frame.add(backButton, gridC);
+        frame.add(backButton, gridC);//adding back button to frame
 
         //this block is for adding calories consumed
         gridC.gridx = 0;
         gridC.gridy = 3;
-        frame.add(addCalsConsumed, gridC);
+        frame.add(addCalsConsumed, gridC);//adding calories consumed button to frame
 
         addCalsConsumed.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
             @Override
@@ -135,12 +135,12 @@ public class HealthAssistant extends JFrame {
 
         gridC.gridx = 1;
         gridC.gridy = 3;
-        frame.add(inAddCalsConsumed, gridC);
+        frame.add(inAddCalsConsumed, gridC);//adding Calories Consumed textfield to frame
 
         //this block is for adding calories burned
         gridC.gridx = 0;
         gridC.gridy = 4;
-        frame.add(addCalsBurn, gridC);
+        frame.add(addCalsBurn, gridC);//adding calories burned button to frame
 
         addCalsBurn.addActionListener(new ActionListener() { // Adds callories consumed to net callorie intake
             @Override
@@ -155,7 +155,7 @@ public class HealthAssistant extends JFrame {
         //resetting the calories
         gridC.gridx = 1;
         gridC.gridy = 5;
-        frame.add(resetCals, gridC);
+        frame.add(resetCals, gridC);//adding reset calories button to frame
         resetCals.addActionListener(new ActionListener() //reset the calorie data
         {
             @Override
@@ -170,12 +170,12 @@ public class HealthAssistant extends JFrame {
         
         gridC.gridx = 1;
         gridC.gridy = 4;
-        frame.add(inAddCalsBurn, gridC);
-        backButton.addActionListener(new ActionListener() {
+        frame.add(inAddCalsBurn, gridC);//adding Calories Burned textfield to frame
+        backButton.addActionListener(new ActionListener() {//action listener event for back button
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new MyManager();
+                new MyManager();//returns user to homepage when back button is clicked
             }
 
         });
@@ -185,16 +185,16 @@ public class HealthAssistant extends JFrame {
         frame.setVisible(true);
     }
 
-    private void saveData() {
-        JFrame save = new JFrame("Save Successful");
-        JButton ok = new JButton("OK");
-        JLabel success = new JLabel("Your settings have been saved successfully!");
+    private void saveData() {//method that is called when user adds calories burned or consumed
+        JFrame save = new JFrame("Save Successful");//creating new jframe titled "Save Successful"
+        JButton ok = new JButton("OK");//creating ok button
+        JLabel success = new JLabel("Your settings have been saved successfully!");//creating label to say the user's settings are saved
 
-        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        save.setLayout(new GridBagLayout());
+        save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ends the program when the user closes the window
+        save.setLayout(new GridBagLayout());//sets layout of frame to gridbaglayout
 
         try {
-            save.setIconImage(ImageIO.read(new File("newLogo.png")));
+            save.setIconImage(ImageIO.read(new File("newLogo.png")));//sets icon to mymanager logo
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -205,16 +205,16 @@ public class HealthAssistant extends JFrame {
 
         sc.gridx = 0;
         sc.gridy = 0;
-        save.add(success, sc);
+        save.add(success, sc);//adding success label to frame
         sc.gridx = 0;
         sc.gridy = 1;
-        save.add(ok, sc);
+        save.add(ok, sc);//adding ok button to frame
 
-        ok.addActionListener(new ActionListener() {
+        ok.addActionListener(new ActionListener() {//action listener event for ok button
             @Override
             public void actionPerformed(ActionEvent e) {
                 save.setVisible(false);
-                new HealthAssistant();
+                new HealthAssistant();//returns user to health assistant page when ok button is clicked
             }
         });
 
@@ -225,7 +225,7 @@ public class HealthAssistant extends JFrame {
     }
 
     // returns BMI front info entered in the myProfile window
-    private double calcBMI(ProfileData p) {
+    private double calcBMI(ProfileData p) {//method for calculating bmi
         double calculatedBMI;
         double heightInches = (p.getHeight().getFoot() * 12 + p.getHeight().getInches());
         double heightSq = heightInches * heightInches;

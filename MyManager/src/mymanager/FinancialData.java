@@ -11,7 +11,7 @@ import java.io.*;
  */
 public class FinancialData implements Serializable{
     
-    private double savingsAmount, accountBalance;
+    private double savingsAmount, accountBalance;//double variables for savings amount and account balance
     private boolean justReset; //boolean value to tell whether it was just reset
     private static final long serialVersionUID = -5508928421573314610L;
     
@@ -31,36 +31,36 @@ public class FinancialData implements Serializable{
         justReset = true;
     }
         
-    public void addSavings(double addAmount){
+    public void addSavings(double addAmount){//method to add savings
         savingsAmount += addAmount;
         justReset = false;
     }
     
-    public void removeSavings(double removeAmount){
+    public void removeSavings(double removeAmount){//method to remove savings
         savingsAmount -= removeAmount;
         justReset = false;
     }
     
-    public void addIncome(double addAmount){
+    public void addIncome(double addAmount){//method to add account balance
         accountBalance += addAmount;
         justReset = false;
     }
     
-    public void removeIncome(double removeAmount){
+    public void removeIncome(double removeAmount){//method to remove from account balance
         accountBalance -= removeAmount;
         justReset = false;
     }
     
-    public double getCurrentSavingsBalance(){
+    public double getCurrentSavingsBalance(){//method to get the current savings balance
         return savingsAmount;
     }
     
-    public double getCurrentAccountBalance(){
+    public double getCurrentAccountBalance(){//method to get the current account balance
         return accountBalance;
     }
     
     
-    public static void write(FinancialData newData){
+    public static void write(FinancialData newData){//method to write financial data to text file
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try{
@@ -77,7 +77,7 @@ public class FinancialData implements Serializable{
         }
     }
     
-    public static FinancialData read(){
+    public static FinancialData read(){//method to read financial data
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         FinancialData data = null;
@@ -103,7 +103,7 @@ public class FinancialData implements Serializable{
         return data;
     }
     
-    public boolean getResetStatus(){
+    public boolean getResetStatus(){//method to get the reset status
         return justReset;
     }
     
